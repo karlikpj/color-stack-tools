@@ -1,20 +1,25 @@
-![travis ci build](https://travis-ci.org/pjkarlik/react-timeline.svg?branch=master&style=flat-square)
+![travis ci build](https://travis-ci.org/pjkarlik/color-stack-generator.svg?branch=main&style=flat-square)
 
-![splash](./splash1.png)![splash](./splash2.png)
+# Color Stack Builder and other Goodies
+
+![splash](./splash.png)
 
 ![react](https://img.shields.io/badge/react-16.13.1-green.svg?style=flat-square)
 ![webpack](https://img.shields.io/badge/webpack-4.44.1-51b1c5.svg?style=flat-square)
 ![stage-0](https://img.shields.io/badge/ECMAScript-6-c55197.svg?style=flat-square)
 
-# Shader Timeline with React.js
+Some tools and things to build / consume and work on the design tokens from the USWDS - [USWDS](https://designsystem.digital.gov/design-tokens/color/overview/)
 
-Simple React.js based timeline - using 'useLayoutEffect' to create a hook that helps the app determin what items are on screen and animates them in or out. The site itself lists my shaders that I have created on [Shadertoy.com](https://www.shadertoy.com/user/pjkarlik)
+Current build is a simple stack builder that takes amount of spread and generates
+the grades at each point for that hue.
 
-You can click one of the itemline items to expand the description and also open a modal view to an active rendering of my shader. The shaders both list and code are using ShaderToy's DB API - so may be slow at times.
+ToDo:
+
+- Contrast and Lumanice checkers
+- Import / Export of YAML and JSON files
+- Component preview
 
 ## Run the example
-
-Check your browser [WebGL support](https://caniuse.com/webgl2).
 
 Requires Node v12.xx.xx or greater
 
