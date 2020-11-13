@@ -1,12 +1,10 @@
-![travis ci build](https://travis-ci.org/pjkarlik/color-stack-generator.svg?branch=main&style=flat-square)
+![react](https://img.shields.io/badge/react-16.13.1-green.svg?style=flat-square)
+![version](https://img.shields.io/badge/version-0.00.1-51b1c5.svg?style=flat-square)
+![stage-0](https://img.shields.io/badge/ECMAScript-6-c55197.svg?style=flat-square)
 
 # Color Stack Builder and other Goodies
 
 ![splash](./splash.png)
-
-![react](https://img.shields.io/badge/react-16.13.1-green.svg?style=flat-square)
-![webpack](https://img.shields.io/badge/webpack-4.44.1-51b1c5.svg?style=flat-square)
-![stage-0](https://img.shields.io/badge/ECMAScript-6-c55197.svg?style=flat-square)
 
 Some tools and things to build / consume and work on the design tokens from the USWDS - [USWDS](https://designsystem.digital.gov/design-tokens/color/overview/)
 
