@@ -1,0 +1,81 @@
+@import (reference) "./tokens.less";
+
+.wrapper {
+  display: inline-block;
+  margin: auto;
+  width: auto;
+}
+
+.header {
+  background: #333;
+  color: #fff;
+  padding: 10px 0;
+  width: 100%;
+
+  h1 {
+    color: #fff;
+    margin-left: 8px;
+  }
+}
+.controls {
+  list-style-type: none;
+  padding: 16px 8px;
+  li {
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+.stackWrapper {
+  border: 1px solid #777;
+  margin: 8px;
+  padding: 16px 8px 16px 16px;
+  position: relative;
+}
+
+.colorStack {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0 20px;
+}
+
+.stackItem {
+  color: #000;
+  margin: 2px;
+  vertical-align: top;
+}
+
+.chipHex {
+  display: inline-block;
+  color: #000;
+  font-family: monaco, Consolas, Lucida Console, monospace;
+  font-size: 12px;
+  margin-right: 24px;
+  padding: 1px;
+}
+
+.chip {
+  border: 1px solid #777;
+  color: #000;
+  display: inline-block;
+  height: 10px;
+  margin-right: 8px;
+  padding: 8px;
+  vertical-align: middle;
+  width: 10px;
+}
+.delete {
+  border: 1px solid #777;
+  color: #000;
+  cursor: pointer;
+  font-size: 12px;
+  float: right;
+  padding: 4px 6px;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  &:hover {
+    background: #333;
+    color: #fff;
+  }
+}
