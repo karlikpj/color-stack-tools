@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ColorStack from "./ColorStack";
 
 import { Store } from "../Store";
-import { setStackSize, setLiveStacks } from "../Actions";
+import { setStackSize, addLiveStack } from "../Actions";
 
 import css from "../styles/styles.less";
 
@@ -10,22 +10,12 @@ const ColorStackGenerator = (props) => {
   const { state, dispatch } = useContext(Store);
   const { stackSize, liveStacks } = state;
 
-  const randomColor = () => {
-    return "#" + Math.floor(Math.random() * 16777214).toString(16);
-  };
-
   const handleSelect = (e) => {
     setStackSize(e.target.value, dispatch);
   };
 
   const handleClick = () => {
-    const newStack = JSON.parse(JSON.stringify(liveStacks));
-    newStack.push(randomColor());
-    setLiveStacks(newStack);
-  };
-
-  const handleUpdate = (newcolor, color) => {
-    setLiveStacks({ newcolor, color }, dispatch);
+    addLiveStack(dispatch);
   };
 
   const dropDown = (

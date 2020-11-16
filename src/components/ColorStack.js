@@ -10,19 +10,13 @@ const ColorStack = (props) => {
   const { color } = props;
   const { state, dispatch } = useContext(Store);
   const { stackSize } = state;
-
-  const [targetColor, setTargetColor] = React.useState(color);
-
-  useEffect(() => {
-    setTargetColor(color);
-  }, [color]);
-
+  console.log(color);
   const handleDelete = () => {
-    deleteLiveStack(targetColor, dispatch);
+    deleteLiveStack(color, dispatch);
   };
 
   const handleColor = (e) => {
-    setLiveStacks({ newcolor: e.target.value, color: targetColor }, dispatch);
+    setLiveStacks({ newcolor: e.target.value, color }, dispatch);
   };
   /* eslint-disable */
   const hexToRgb = (hex) => {
@@ -41,12 +35,8 @@ const ColorStack = (props) => {
       <a href="#" className={css.delete} onClick={(e) => handleDelete(e)}>
         X
       </a>
-      <ColorChips tc={hexToRgb(targetColor)} stackSize={~~(stackSize / 2)} />
-      <input
-        type="color"
-        value={targetColor}
-        onChange={(e) => handleColor(e)}
-      />
+      <ColorChips tc={hexToRgb(color)} stackSize={~~(stackSize / 2)} />
+      <input type="color" value={color} onChange={(e) => handleColor(e)} />
     </div>
   );
 };

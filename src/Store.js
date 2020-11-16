@@ -18,6 +18,13 @@ const setStackSize = (state, val) => {
   return { ...state, stackSize: val };
 };
 
+const addLiveStacks = (state) => {
+  const { liveStacks } = state;
+  const newStack = JSON.parse(JSON.stringify(liveStacks));
+  newStack.push(randomColor());
+  return { ...state, liveStacks: newStack };
+};
+
 const setLiveStacks = (state, config) => {
   const { newcolor, color } = config;
   const { liveStacks } = state;
@@ -29,7 +36,9 @@ const setLiveStacks = (state, config) => {
 
 const deleteLiveStack = (state, val) => {
   const { liveStacks } = state;
+  console.log(val);
   if (liveStacks.length < 2) return { ...state };
+  console.log(liveStacks);
   let newStack = JSON.parse(JSON.stringify(liveStacks));
   const i = newStack.findIndex((colors) => colors === val);
   newStack.splice(i, 1);
@@ -43,7 +52,9 @@ const reducer = (state, action) => {
     case "SET_LIVESTACKS":
       return setLiveStacks(state, action.config);
     case "DELETE_LIVESTACK":
-      return deleteLiveStack(state, action.config);
+      return deleteLiveStack(state, action.val);
+    case "ADD_LIVESTACK":
+      return addLiveStacks(state);
     default:
       return state;
   }

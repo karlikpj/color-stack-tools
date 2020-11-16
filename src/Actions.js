@@ -4,6 +4,11 @@ export const setStackSize = (value, dispatch) => {
     val: value,
   });
 };
+export const addLiveStack = (dispatch) => {
+  dispatch({
+    type: "ADD_LIVESTACK",
+  });
+};
 
 export const setLiveStacks = (value, dispatch) => {
   dispatch({
