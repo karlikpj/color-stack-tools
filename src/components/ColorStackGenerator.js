@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import ColorStack from "./ColorStack";
+
+import { Store } from "../Store";
+import { setStackSize, setLiveStacks } from "../Actions";
+
 import css from "../styles/styles.less";
 
-const baseColors = ["#201FF3", "#f9319f", "#33FF9f", "#f9f100"];
 const ColorStackGenerator = (props) => {
-  const [stackSize, setStackSize] = useState(10);
-  const [liveStacks, setLiveStacks] = useState(baseColors);
+  const { state, dispatch } = useContext(Store);
+  const { stackSize, liveStacks } = state;
 
   const randomColor = () => {
     return "#" + Math.floor(Math.random() * 16777214).toString(16);
   };
 
   const handleSelect = (e) => {
-    setStackSize(e.target.value);
+    setStackSize(e.target.value, dispatch);
   };
 
   const handleClick = () => {
@@ -22,18 +25,7 @@ const ColorStackGenerator = (props) => {
   };
 
   const handleUpdate = (newcolor, color) => {
-    let newStack = JSON.parse(JSON.stringify(liveStacks));
-    const i = newStack.findIndex((colors) => colors === color);
-    newStack[i] = newcolor;
-    setLiveStacks(newStack);
-  };
-
-  const handleDelete = (color) => {
-    if (liveStacks.length < 2) return;
-    let newStack = JSON.parse(JSON.stringify(liveStacks));
-    const i = newStack.findIndex((colors) => colors === color);
-    newStack.splice(i, 1);
-    setLiveStacks(newStack);
+    setLiveStacks({ newcolor, color }, dispatch);
   };
 
   const dropDown = (
@@ -51,12 +43,7 @@ const ColorStackGenerator = (props) => {
     return stacks.map((item, index) => {
       return (
         <div className={css.wrapper} key={`STACK_${index}_${index}`}>
-          <ColorStack
-            color={item}
-            updateColor={handleUpdate}
-            removeColor={handleDelete}
-            stackSize={~~(stackSize / 2)}
-          />
+          <ColorStack color={item} />
         </div>
       );
     });
