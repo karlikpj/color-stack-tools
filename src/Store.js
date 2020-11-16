@@ -1,20 +1,30 @@
 import React, { createContext, useReducer } from "react";
+import randomColor from "./utils/randomColor";
 
-const baseColors = ["#213867", "#4BBFC6", "#FFD62E", "#BB0E3D"];
+import uswdsTokens from "./tokens/uswds-tokens";
+const baseColors = [
+  // "#213867",
+  "#007BBD",
+  "#4BBFC6",
+  // "#2A7F84",
+  "#F7F7F7",
+  // "#74767B",
+  //  "4F5256",
+  "#FFD62E",
+  //"#D5A129",
+  // "#926E1C",
+  "#BB0E3D",
+];
 
 const initialState = {
   liveStacks: baseColors,
   stackSize: 10,
+  tokens: uswdsTokens,
 };
 
 export const Store = createContext(initialState);
 
-const randomColor = () => {
-  return "#" + Math.floor(Math.random() * 16777214).toString(16);
-};
-
 const setStackSize = (state, val) => {
-  console.log(val);
   return { ...state, stackSize: val };
 };
 
@@ -36,9 +46,7 @@ const setLiveStacks = (state, config) => {
 
 const deleteLiveStack = (state, val) => {
   const { liveStacks } = state;
-  console.log(val);
   if (liveStacks.length < 2) return { ...state };
-  console.log(liveStacks);
   let newStack = JSON.parse(JSON.stringify(liveStacks));
   const i = newStack.findIndex((colors) => colors === val);
   newStack.splice(i, 1);

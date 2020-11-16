@@ -1,14 +1,11 @@
 import React from "react";
+
+import toHex from "../utils/toHex";
+
 import css from "../styles/styles.less";
 
 const ColorChips = (props) => {
   const { tc, stackSize } = props;
-
-  const toHex = (n) => {
-    var h = (~~n).toString(16);
-    if (h.length < 2) h = "0" + h;
-    return h;
-  };
 
   const colorStackA = [];
   const colorStackB = [];

@@ -1,4 +1,4 @@
-const uswds = {
+const uswdsTokens = {
   basic: [
     {
       token: "red",
@@ -2337,4 +2337,4 @@ const uswds = {
   },
 };
 
-export default uswds;
+export default uswdsTokens;
