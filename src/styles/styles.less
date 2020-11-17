@@ -61,8 +61,23 @@
   height: 10px;
   margin-right: 8px;
   padding: 8px;
+  position: relative;
   vertical-align: middle;
   width: 10px;
+
+  .lumtag {
+    background: #fff;
+    border: 1px solid #777;
+    display: none;
+    padding: 4px;
+    position: absolute;
+    bottom: 100%;
+    right: 100%;
+  }
+
+  &:hover .lumtag {
+    display: inline-block;
+  }
 }
 .delete {
   border: 1px solid #777;
