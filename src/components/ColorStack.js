@@ -11,7 +11,7 @@ const ColorStack = (props) => {
   const { dispatch } = useContext(Store);
 
   const handleDelete = () => {
-    deleteLiveStack(stackObject.id, dispatch);
+    deleteLiveStack(stackObject.target, dispatch);
   };
 
   const memoizedColorChips = useMemo(

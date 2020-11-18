@@ -64,19 +64,17 @@ const setStackChip = (state, config) => {
   const { newcolor, color, target } = config;
   const { liveStacks } = state;
   let newStack = JSON.parse(JSON.stringify(liveStacks));
-  console.log(newStack);
   const i = newStack.findIndex((stack) => stack.target === target);
   const d = newStack[i].stack.findIndex((colors) => colors === color);
   newStack[i].stack[d] = newcolor;
-  console.log(newStack[i][d]);
   return { ...state, liveStacks: newStack };
 };
 
 const deleteLiveStack = (state, val) => {
   const { liveStacks } = state;
-  if (liveStacks.length < 2) return { ...state };
+  if (liveStacks.length < 1) return { ...state };
   let newStack = JSON.parse(JSON.stringify(liveStacks));
-  const i = newStack.findIndex((colors) => colors === val);
+  const i = newStack.findIndex((stack) => stack.target === val);
   newStack.splice(i, 1);
   return { ...state, liveStacks: newStack };
 };
