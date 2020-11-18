@@ -9,13 +9,11 @@
 
 Color stack generator and tools to build, consume and work with the design tokens from the USWDS - [USWDS](https://designsystem.digital.gov/design-tokens/color/overview/)
 
-This is a simple tool to edit theme/colors. You start with a base hue value, which is spread by it's stack size and evaluates the grade values. Once a base color is selected you can then fine tune colors that fail the gradient check - which alines a rating to the colors luminance values.
+This is a simple tool to edit and build colors stacks and export that data. You start with a base hue value, which is then spread by it's stack size and evaluates the 'grade' values. Once a base color is saved you can then fine tune colors in that stack that fail the gradient check - which aligns a rating to the colors based on its luminance values. Those number values translate to WCAG AA/AAA contrast accessibility which is baked into the USWDS.
 
-You can name the stacks, which will either override or add to the USWDS color tokens when building other brands basded off the USWDS. A simple export is availble to save a json file which matches the token structure. The grade values translate to WCAG AA/AAA contrast accessibility numbers that most color sections are based on.
+You can name the stacks at creation, which can either override or add to the USWDS color tokens (TBD) A simple export on each stack is availble to open a json file which matches the token structure in a new window. Ideally this would be a full token object that could be imported into any project to override the USWDS.
 
-These stacks would then be used to override the default theme, and brand the USWDS for other divisions or groups/projects.
-
-These grade values do not follow a linear scale along the luminance, rather between fixed points as listed int he table below.
+These grade values do not follow a linear scale along the luminance, rather between fixed points as listed int he table below. The colors picked by the USWDS adhear to this specification and state that the colors are not a set formal formula but manually edited to match the ratings for each grade.
 
 | grade | minimum luminance | maximum luminance |
 | ----- | :---------------: | :---------------: |
