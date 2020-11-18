@@ -1,18 +1,9 @@
 "use strict";
-const fs = require("fs");
 const path = require("path");
-const pkgInfo = require("./package.json");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const DEV_PORT = 2020;
-const { name, version, description, repository } = pkgInfo;
-const { url } = repository;
-
-fs.writeFileSync(
-  "version.json",
-  JSON.stringify({ name, version, description, url })
-);
 
 const config = {
   name: "color-stack-generator",

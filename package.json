@@ -1,7 +1,7 @@
 {
   "name": "color-stack-generator",
   "version": "0.0.1",
-  "description": "react based timeline.",
+  "description": "color stack editor for the USWDS | alpha development",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --progress --colors --content-base dist/",
