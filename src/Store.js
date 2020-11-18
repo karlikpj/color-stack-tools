@@ -41,12 +41,15 @@ const stackData = (id, color, stack) => {
 };
 
 export const Store = createContext(initialState);
+
 export const clone = (array) => {
   return JSON.parse(JSON.stringify(array));
 };
+
 const setStackSize = (state, val) => {
   return { ...state, stackSize: val };
 };
+
 const exportStack = (state, config) => {
   const { stack, id = "undefinted" } = config;
   let dataSet = {};
@@ -63,6 +66,7 @@ const exportStack = (state, config) => {
   window.open().document.write(JSON.stringify(dataSet));
   return { ...state };
 };
+
 const addLiveStack = (state, config) => {
   const { colorName, targetColor } = config;
   const { liveStacks, stackSize } = state;
@@ -99,6 +103,7 @@ const deleteLiveStack = (state, val) => {
   newStack.splice(i, 1);
   return { ...state, liveStacks: newStack };
 };
+
 const setModalState = (state, config) => {
   const modalConfig = {
     isModalOpen: config.isOpen,
