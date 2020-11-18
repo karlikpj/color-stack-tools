@@ -51,7 +51,7 @@ const ColorStackGenerator = (props) => {
   return (
     <div>
       <div className={css.header}>
-        <h1>Color Stack Generator</h1>
+        <h1>Color Stack Generator / Editor</h1>
         <ul className={css.controls}>
           <li>stack size</li>
           <li>{dropDown}</li>
