@@ -12,9 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@stash:7999/~pkarlik/color-stack-generator.git"
+    "url": "ssh://git@stash:7999/~karlikpj/color-stack-generator.git"
   },
-  "author": "pjkarlik@gmail.com",
+  "author": "karlikpj@gmail.com",
   "license": "UNLICENSED",
   "devDependencies": {
     "@babel/core": "^7.11.5",
