@@ -5,15 +5,14 @@
 # Color Stack Builder and other Goodies
 
 ![splash](./splash.png)
-
+![splash](./splash2.png)
 Some tools and things to build / consume and work on the design tokens from the USWDS - [USWDS](https://designsystem.digital.gov/design-tokens/color/overview/)
 
-Current build is a simple stack builder that takes amount of spread and generates
-the grades at each point for that hue.
+Current build is a simple theme color stack builder that lets you edit set amount of colors to match the USWDS color 'family' and it's grade values. These grade values translate to the luminance of each color for WCAG AA/AAA contrast accessibility. These stacks would then be used to override the default theme, and brand the USWDS for other divisions or groups/projects.
 
 ToDo:
 
-- Contrast and Lumanice checkers
+- Contrast checker for selected colors
 - Import / Export of YAML and JSON files
 - Component preview
 

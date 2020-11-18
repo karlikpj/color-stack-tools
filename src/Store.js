@@ -23,7 +23,7 @@ const defaultStack = {
 
 const initialState = {
   liveStacks: [],
-  stackSize: 10,
+  stackSize: 11,
   tokens: uswdsTokens,
   isModalOpen: false,
   modalContent: null,
