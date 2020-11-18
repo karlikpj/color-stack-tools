@@ -1,7 +1,6 @@
 // https://designsystem.digital.gov/design-tokens/color/overview/
 const grade = (lum) => {
   let gd = "invalid";
-
   if (lum >= 1) gd = 0;
   if (lum >= 0.85 && lum <= 0.93) gd = 5;
   if (lum >= 0.75 && lum <= 0.82) gd = 10;
@@ -14,7 +13,6 @@ const grade = (lum) => {
   if (lum >= 0.02 && lum <= 0.04) gd = 80;
   if (lum >= 0.005 && lum <= 0.015) gd = 90;
   if (lum <= 0) gd = 100;
-
   return gd;
 };
 

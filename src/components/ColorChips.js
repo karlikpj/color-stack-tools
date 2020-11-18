@@ -1,56 +1,54 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import ChangeColor from "./ChangeColor";
 
 import grade from "../utils/grade";
 import hexToRgb from "../utils/hexToRgb";
 import luminance from "../utils/luminance";
-import toHex from "../utils/toHex";
+
+import { Store } from "../Store";
+import { setModalState } from "../Actions";
 
 import css from "../styles/styles.less";
 
 const ColorChips = (props) => {
-  const { tc, stackSize } = props;
+  const { stack, target, isActive = false } = props;
+  const { dispatch } = useContext(Store);
 
-  const colorStackA = [];
-  const colorStackB = [];
-  const dc = [
-    (255 - tc[0]) / stackSize,
-    (255 - tc[1]) / stackSize,
-    (255 - tc[2]) / stackSize,
-  ];
-  const ac = [tc[0] / stackSize, tc[1] / stackSize, tc[2] / stackSize];
+  const changeColor = (color) => {
+    if (!isActive) return;
+    setModalState(
+      { isOpen: true, content: <ChangeColor color={color} target={target} /> },
+      dispatch
+    );
+  };
 
   const stackChip = (color, index) => {
     const lum = luminance(...hexToRgb(color));
+    const colorGrade = grade(lum);
     return (
-      <li className={css.stackItem} key={`LT_${color}_${index}`}>
+      <li
+        className={`${css.stackItem} ${
+          colorGrade === "invalid" ? css.invalid : null
+        }`}
+        key={`LT_${color}_${index}`}
+      >
         <div className={css.chipHex}>
-          <div className={css.chip} style={{ backgroundColor: color }}>
-            <div className={css.lumtag}> {grade(lum)}</div>
-          </div>
-          {color}
+          <div
+            className={css.chip}
+            onClick={() => changeColor(color)}
+            style={{ backgroundColor: color }}
+          ></div>
+          <div className={css.colortag}>{color}</div>
+          <div className={css.lumtag}> {colorGrade}</div>
         </div>
       </li>
     );
   };
 
-  for (let i = 0; i < stackSize; i++) {
-    const bgColor =
-      "#" +
-      toHex(255 - i * dc[0]) +
-      toHex(255 - i * dc[1]) +
-      toHex(255 - i * dc[2]);
-
-    const fbColor =
-      "#" +
-      toHex((stackSize - i) * ac[0]) +
-      toHex((stackSize - i) * ac[1]) +
-      toHex((stackSize - i) * ac[2]);
-
-    colorStackA.push(stackChip(bgColor, i));
-    colorStackB.push(stackChip(fbColor, i));
-  }
-
-  const colorStack = colorStackA.concat(colorStackB);
+  const colorStack = stack.map((color, index) => {
+    return stackChip(color, index);
+  });
 
   return <ul className={css.colorStack}>{colorStack}</ul>;
 };

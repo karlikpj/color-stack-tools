@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Store } from "../Store";
+import { setModalState } from "../Actions";
+
 import css from "../styles/styles.less";
 
 const ModalWindow = (props) => {
+  const { state, dispatch } = useContext(Store);
   const handleCallBack = () => {
-    props.closeModal();
+    setModalState({ isOpen: false, content: null }, dispatch);
   };
-  const shaderId = props.content;
-  const content = "tbd";
+
   return (
     <div className={css.overlay}>
       <div className={css.modalWindow}>
@@ -20,9 +23,7 @@ const ModalWindow = (props) => {
         >
           x
         </a>
-        <div className={css.row}>
-          <div className={css.cow}>{content}</div>
-        </div>
+        {props.content}
       </div>
     </div>
   );

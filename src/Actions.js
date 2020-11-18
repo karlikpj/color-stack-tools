@@ -4,9 +4,10 @@ export const setStackSize = (value, dispatch) => {
     val: value,
   });
 };
-export const addLiveStack = (dispatch) => {
+export const addLiveStack = (value, dispatch) => {
   dispatch({
     type: "ADD_LIVESTACK",
+    color: value,
   });
 };
 
@@ -17,9 +18,23 @@ export const setLiveStacks = (value, dispatch) => {
   });
 };
 
+export const setStackChip = (value, dispatch) => {
+  dispatch({
+    type: "SET_STACKCHIP",
+    config: value,
+  });
+};
+
 export const deleteLiveStack = (value, dispatch) => {
   dispatch({
     type: "DELETE_LIVESTACK",
     val: value,
+  });
+};
+
+export const setModalState = (value, dispatch) => {
+  dispatch({
+    type: "SET_MODAL_STATE",
+    config: value,
   });
 };

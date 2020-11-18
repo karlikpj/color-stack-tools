@@ -6,6 +6,17 @@
   width: auto;
 }
 
+/* simple grid system */
+.row {
+  display: flex;
+  flex: 1;
+}
+
+.column {
+  flex-direction: column;
+  flex: 1;
+}
+
 .header {
   background: #333;
   color: #fff;
@@ -17,9 +28,28 @@
     margin-left: 8px;
   }
 }
+
+h2 {
+  margin-bottom: 32px;
+}
+
+.data {
+  color: #000;
+  font-family: monaco, Consolas, Lucida Console, monospace;
+  font-size: 12px;
+}
 .controls {
   list-style-type: none;
   padding: 16px 8px;
+  li {
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+.modalItems {
+  list-style-type: none;
+  padding: 16px 0;
   li {
     display: inline-block;
     margin-right: 8px;
@@ -36,13 +66,16 @@
 .colorStack {
   list-style-type: none;
   margin: 0;
-  padding: 10px 0 20px;
+  padding: 0 0 20px;
 }
 
 .stackItem {
   color: #000;
   margin: 2px;
   vertical-align: top;
+  &.invalid {
+    background: #ffd5d5;
+  }
 }
 
 .chipHex {
@@ -64,21 +97,20 @@
   position: relative;
   vertical-align: middle;
   width: 10px;
-
-  .lumtag {
-    background: #fff;
-    border: 1px solid #777;
-    display: none;
-    padding: 4px;
-    position: absolute;
-    bottom: 100%;
-    right: 100%;
-  }
-
-  &:hover .lumtag {
-    display: inline-block;
-  }
 }
+
+.lumtag {
+  display: inline-block;
+  padding: 0 4px;
+  text-align: right;
+  width: 60px;
+}
+
+.colortag {
+  display: inline-block;
+  padding: 0 4px;
+}
+
 .delete {
   border: 1px solid #777;
   color: #000;
@@ -93,4 +125,96 @@
     background: #333;
     color: #fff;
   }
+}
+
+select {
+  background: #ccc;
+  border: 1px solid #777;
+  border-radius: 3px;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+}
+
+input[type="color"] {
+  appearance: none;
+  float: right;
+  height: 32px;
+  margin-bottom: 16px;
+  width: 30px;
+}
+
+.button {
+  background: #ccc;
+  border: 1px solid #777;
+  border-radius: 3px;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 3px 6px;
+  &:hover {
+    background: #777;
+    color: #fff;
+  }
+  &.modal {
+    float: right;
+  }
+}
+
+.selectorUI {
+  list-style-type: none;
+  margin: 0;
+  li {
+    padding: 4px;
+  }
+}
+
+.targetColor {
+  background-color: #ddd;
+  font-size: 16px;
+  font-weight: 700;
+}
+/* Modal Styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 98;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalWindow {
+  background: #fff;
+  padding: 10px 20px;
+  position: relative;
+
+  // top: 50%; i wanted to try with flex over abs position
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  // z-index: 99;
+}
+
+.modalClose {
+  bottom: 102%;
+  background: #fff;
+  color: #000;
+
+  font-size: 25px;
+  font-weight: 700;
+  left: 102%;
+
+  line-height: 1.05;
+  position: absolute;
+  text-decoration: none;
+  text-align: center;
+
+  width: 30px;
+  height: 30px;
 }

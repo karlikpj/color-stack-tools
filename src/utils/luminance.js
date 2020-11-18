@@ -1,4 +1,5 @@
 // function from https://stackoverflow.com/a/9733420/3695983
+// https://www.w3.org/WAI/GL/wiki/Relative_luminance
 const luminance = (r, g, b) => {
   var a = [r, g, b].map(function (v) {
     v /= 255;
