@@ -7,7 +7,7 @@
 ![splash](./splash.png)
 ![splash](./splash2.png)
 
-Color stack generator and tools to build, consume and work with the design tokens from the USWDS - [USWDS](https://designsystem.digital.gov/design-tokens/color/overview/)
+[Color stack generator](http://uswds-stacks.surge.sh/) and tools to build, consume and work with the design tokens from the USWDS - [USWDS](https://designsystem.digital.gov/design-tokens/color/overview/)
 
 This is a simple tool to edit and build colors stacks and export that data. You start with a base hue value, which is then spread by it's stack size and evaluates the 'grade' values. Once a base color is saved you can then fine tune colors in that stack that fail the gradient check - which aligns a rating to the colors based on its luminance values. Those number values translate to WCAG AA/AAA contrast accessibility which is baked into the USWDS.
 
