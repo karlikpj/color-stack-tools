@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from "react";
 import ColorChips from "./ColorChips";
 
 import { Store } from "../Store";
-import { deleteLiveStack } from "../Actions";
+import { deleteLiveStack, exportStack } from "../Actions";
 
 import css from "../styles/styles.less";
 
@@ -12,6 +12,10 @@ const ColorStack = (props) => {
 
   const handleDelete = () => {
     deleteLiveStack(stackObject.target, dispatch);
+  };
+
+  const handleExport = () => {
+    exportStack(stackObject, dispatch);
   };
 
   const memoizedColorChips = useMemo(
@@ -30,7 +34,11 @@ const ColorStack = (props) => {
       <a href="#" className={css.delete} onClick={(e) => handleDelete(e)}>
         X
       </a>
+      <h3>{stackObject.id}</h3>
       {memoizedColorChips}
+      <a href="#" className={css.export} onClick={(e) => handleExport(e)}>
+        export
+      </a>
     </div>
   );
 };

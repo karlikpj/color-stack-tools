@@ -16,16 +16,25 @@ const SelectColor = (props) => {
   const { color = "#cccccc" } = props;
   const { state, dispatch } = useContext(Store);
   const [targetColor, setTargetColor] = useState(color);
+  const [colorName, setColorName] = useState("undefined");
   const { stackSize } = state;
 
   const setColor = (e) => {
     e.preventDefault();
-    addLiveStack(targetColor, dispatch);
+    const config = {
+      targetColor,
+      colorName,
+    };
+    addLiveStack(config, dispatch);
     setModalState({ isOpen: false, content: null }, dispatch);
   };
 
   const handleColor = (e) => {
     setTargetColor(e.target.value);
+  };
+
+  const handleUpdate = (e) => {
+    setColorName(e.target.value);
   };
 
   const lum = luminance(...hexToRgb(targetColor));
@@ -34,6 +43,14 @@ const SelectColor = (props) => {
   return (
     <div style={{ width: 550 }}>
       <h2>Select Base Color for Stack</h2>
+      <div className={css.form}>
+        <label>Color Name </label>
+        <input
+          className={css.colorName}
+          value={colorName}
+          onChange={(e) => handleUpdate(e)}
+        />
+      </div>
       <div className={css.row}>
         <div className={css.column}>
           <ColorChips stack={stack} />
@@ -47,7 +64,9 @@ const SelectColor = (props) => {
                 <li>luminance</li>
                 <li className={css.data}>{lum.toFixed(4)}</li>
                 <li>grade</li>
-                <li className={css.data}>{colorGrade}</li>
+                <li className={css.data}>
+                  {colorGrade !== "invalid" ? colorGrade : "--"}
+                </li>
               </ul>
             </li>
             <li>

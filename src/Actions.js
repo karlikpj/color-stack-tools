@@ -7,7 +7,7 @@ export const setStackSize = (value, dispatch) => {
 export const addLiveStack = (value, dispatch) => {
   dispatch({
     type: "ADD_LIVESTACK",
-    color: value,
+    config: value,
   });
 };
 
@@ -21,6 +21,13 @@ export const setLiveStacks = (value, dispatch) => {
 export const setStackChip = (value, dispatch) => {
   dispatch({
     type: "SET_STACKCHIP",
+    config: value,
+  });
+};
+
+export const exportStack = (value, dispatch) => {
+  dispatch({
+    type: "EXPORT_STACK",
     config: value,
   });
 };

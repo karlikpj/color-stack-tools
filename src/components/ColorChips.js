@@ -40,7 +40,10 @@ const ColorChips = (props) => {
             style={{ backgroundColor: color }}
           ></div>
           <div className={css.colortag}>{color}</div>
-          <div className={css.lumtag}> {colorGrade}</div>
+          <div className={css.lumtag}>
+            {" "}
+            {colorGrade !== "invalid" ? colorGrade : "--"}
+          </div>
         </div>
       </li>
     );

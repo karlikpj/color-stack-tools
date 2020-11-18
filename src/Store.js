@@ -1,5 +1,8 @@
 import React, { createContext, useReducer } from "react";
 import generateSpread from "./utils/generateSpread";
+import grade from "./utils/grade";
+import hexToRgb from "./utils/hexToRgb";
+import luminance from "./utils/luminance";
 
 import uswdsTokens from "./tokens/uswds-tokens";
 const baseColors = [
@@ -38,23 +41,41 @@ const stackData = (id, color, stack) => {
 };
 
 export const Store = createContext(initialState);
-
+export const clone = (array) => {
+  return JSON.parse(JSON.stringify(array));
+};
 const setStackSize = (state, val) => {
   return { ...state, stackSize: val };
 };
+const exportStack = (state, config) => {
+  const { stack, id = "undefinted" } = config;
+  let dataSet = {};
+  dataSet[id] = [];
+  for (let i = 0; i < stack.length; i++) {
+    const lum = luminance(...hexToRgb(stack[i]));
+    const colorGrade = grade(lum);
+    dataSet[id].push({
+      token: `${id}-${colorGrade}`,
+      value: stack[i],
+    });
+  }
 
-const addLiveStack = (state, color) => {
+  window.open().document.write(JSON.stringify(dataSet));
+  return { ...state };
+};
+const addLiveStack = (state, config) => {
+  const { colorName, targetColor } = config;
   const { liveStacks, stackSize } = state;
-  const newStack = JSON.parse(JSON.stringify(liveStacks));
-  const stack = generateSpread(color, ~~(stackSize / 2));
-  newStack.push(stackData(newStack.length + 1, color, stack));
+  const newStack = clone(liveStacks);
+  const stack = generateSpread(targetColor, ~~(stackSize / 2));
+  newStack.push(stackData(colorName, targetColor, stack));
   return { ...state, liveStacks: newStack };
 };
 
 const setLiveStacks = (state, config) => {
   const { newcolor, color } = config;
   const { liveStacks } = state;
-  let newStack = JSON.parse(JSON.stringify(liveStacks));
+  let newStack = clone(liveStacks);
   const i = newStack.findIndex((colors) => colors === color);
   newStack[i] = newcolor;
   return { ...state, liveStacks: newStack };
@@ -63,7 +84,7 @@ const setLiveStacks = (state, config) => {
 const setStackChip = (state, config) => {
   const { newcolor, color, target } = config;
   const { liveStacks } = state;
-  let newStack = JSON.parse(JSON.stringify(liveStacks));
+  let newStack = clone(liveStacks);
   const i = newStack.findIndex((stack) => stack.target === target);
   const d = newStack[i].stack.findIndex((colors) => colors === color);
   newStack[i].stack[d] = newcolor;
@@ -73,7 +94,7 @@ const setStackChip = (state, config) => {
 const deleteLiveStack = (state, val) => {
   const { liveStacks } = state;
   if (liveStacks.length < 1) return { ...state };
-  let newStack = JSON.parse(JSON.stringify(liveStacks));
+  let newStack = clone(liveStacks);
   const i = newStack.findIndex((stack) => stack.target === val);
   newStack.splice(i, 1);
   return { ...state, liveStacks: newStack };
@@ -88,6 +109,8 @@ const setModalState = (state, config) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "EXPORT_STACK":
+      return exportStack(state, action.config);
     case "SET_MODAL_STATE":
       return setModalState(state, action.config);
     case "SET_STACKSZIE":
@@ -99,7 +122,7 @@ const reducer = (state, action) => {
     case "DELETE_LIVESTACK":
       return deleteLiveStack(state, action.val);
     case "ADD_LIVESTACK":
-      return addLiveStack(state, action.color);
+      return addLiveStack(state, action.config);
     default:
       return state;
   }
