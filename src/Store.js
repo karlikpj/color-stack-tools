@@ -1,8 +1,5 @@
 import React, { createContext, useReducer } from "react";
 import generateSpread from "./utils/generateSpread";
-import grade from "./utils/grade";
-import hexToRgb from "./utils/hexToRgb";
-import luminance from "./utils/luminance";
 
 import uswdsTokens from "./tokens/uswds-tokens";
 
@@ -24,18 +21,18 @@ const getItemsList = (tokens) => {
   return Object.keys(tokens);
 };
 
-const defaultStack = { red: [], green: [] };
+const defaultStack = { red: [], green: [], blue: [] };
 defaultStack.red = uswdsTokens.system.red;
 defaultStack.green = uswdsTokens.system.green;
-//defaultStack.blue = uswdsTokens.system.blue;
+defaultStack.blue = uswdsTokens.system.blue;
 
 const initialState = {
+  isModalOpen: false,
   liveStacks: defaultStack,
+  modalContent: null,
   stackSize: 10,
   tokens: uswdsTokens,
-  tokenSections: propertiesToArray(uswdsTokens), //Object.keys(uswdsTokens),
-  isModalOpen: false,
-  modalContent: null,
+  tokenSections: propertiesToArray(uswdsTokens),
 };
 
 const stackData = (id, color, stack) => {
@@ -52,43 +49,36 @@ export const clone = (array) => {
   return JSON.parse(JSON.stringify(array));
 };
 
-const setStackSize = (state, val) => {
-  return { ...state, stackSize: val };
-}; //
+const addLiveStack = (state, config) => {
+  const { colorName, stack } = config;
+  const { liveStacks } = state;
+  let newStack = clone(liveStacks);
+  newStack[`${colorName}`] = stack;
 
-const exportStack = (state, config) => {
-  const { stack, id = "undefinted" } = config;
-  let dataSet = {};
-  dataSet[id] = [];
-  for (let i = 0; i < stack.length; i++) {
-    const lum = luminance(...hexToRgb(stack[i]));
-    const colorGrade = grade(lum);
-    dataSet[id].push({
-      token: `${id}-${colorGrade}`,
-      value: stack[i],
-    });
-  }
-
-  window.open().document.write(JSON.stringify(dataSet));
-  return { ...state };
+  return { ...state, liveStacks: newStack };
 };
 
-const addLiveStack = (state, config) => {
-  const { colorName, targetColor } = config;
-  const { liveStacks, stackSize } = state;
-  const newStack = clone(liveStacks);
-  const stack = generateSpread(targetColor, ~~(stackSize / 2));
-  newStack.push(stackData(colorName, targetColor, stack));
+const deleteLiveStack = (state, val) => {
+  const { liveStacks } = state;
+  let newStack = clone(liveStacks);
+  delete newStack[val];
   return { ...state, liveStacks: newStack };
+};
+
+const exportStack = (state, val) => {
+  const { liveStacks } = state;
+  let newStack = {};
+  newStack[`${val}`] = clone(liveStacks[val]);
+  window.open().document.write(JSON.stringify(newStack));
+  return { ...state };
 };
 
 const loadLiveStack = (state, val) => {
   const { tokens, liveStacks } = state;
   let newStack = clone(liveStacks);
   const sec = val.split(".");
-  console.log(tokens[sec[0]]);
   let newSet = {};
-  newSet[sec[1]] = tokens[sec[0]][sec[1]];
+  newSet[`${sec[1]}`] = tokens[sec[0]][sec[1]];
   newStack = {
     ...newStack,
     ...newSet,
@@ -105,6 +95,14 @@ const setLiveStacks = (state, config) => {
   return { ...state, liveStacks: newStack };
 };
 
+const setModalState = (state, config) => {
+  const modalConfig = {
+    isModalOpen: config.isOpen,
+    modalContent: config.content || null,
+  };
+  return { ...state, ...modalConfig };
+};
+
 const setStackChip = (state, config) => {
   const { newcolor, color, id, name } = config;
   const { liveStacks } = state;
@@ -114,39 +112,22 @@ const setStackChip = (state, config) => {
   return { ...state, liveStacks: newStack };
 };
 
-const deleteLiveStack = (state, val) => {
-  const { liveStacks } = state;
-  let newStack = clone(liveStacks);
-  delete newStack[val];
-  return { ...state, liveStacks: newStack };
-};
-
-const setModalState = (state, config) => {
-  const modalConfig = {
-    isModalOpen: config.isOpen,
-    modalContent: config.content || null,
-  };
-  return { ...state, ...modalConfig };
-};
-
 const reducer = (state, action) => {
   switch (action.type) {
+    case "ADD_LIVESTACK":
+      return addLiveStack(state, action.config);
+    case "DELETE_LIVESTACK":
+      return deleteLiveStack(state, action.val);
     case "EXPORT_STACK":
-      return exportStack(state, action.config);
+      return exportStack(state, action.val);
+    case "LOAD_LIVESTACK":
+      return loadLiveStack(state, action.val);
     case "SET_MODAL_STATE":
       return setModalState(state, action.config);
-    case "SET_STACKSZIE":
-      return setStackSize(state, action.val);
     case "SET_LIVESTACKS":
       return setLiveStacks(state, action.config);
     case "SET_STACKCHIP":
       return setStackChip(state, action.config);
-    case "DELETE_LIVESTACK":
-      return deleteLiveStack(state, action.val);
-    case "LOAD_LIVESTACK":
-      return loadLiveStack(state, action.val);
-    case "ADD_LIVESTACK":
-      return addLiveStack(state, action.config);
     default:
       return state;
   }

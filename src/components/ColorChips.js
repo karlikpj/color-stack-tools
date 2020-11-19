@@ -43,7 +43,7 @@ const ColorChips = (props) => {
           <div
             className={css.chip}
             onClick={() => {
-              if (colorGrade !== "invalid") changeColor(color, name);
+              changeColor(color, name);
             }}
             style={{ backgroundColor: color }}
           ></div>
