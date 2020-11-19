@@ -12,7 +12,8 @@ import css from "../styles/styles.less";
 const ChangeColor = (props) => {
   const { color, id, name } = props;
   const { dispatch } = useContext(Store);
-  const [targetColor, setTargetColor] = useState(color);
+  const fcolor = !color ? "#FFFFFF" : color;
+  const [targetColor, setTargetColor] = useState(fcolor);
 
   const setColor = (e) => {
     e.preventDefault();

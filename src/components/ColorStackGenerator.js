@@ -11,7 +11,6 @@ import css from "../styles/styles.less";
 const ColorStackGenerator = (props) => {
   const { state, dispatch } = useContext(Store);
   const {
-    stackSize,
     liveStacks,
     tokenSections,
     isModalOpen = false,
@@ -22,10 +21,6 @@ const ColorStackGenerator = (props) => {
 
   const handleSelect = (e) => {
     setStackSelected(e.target.value);
-  };
-
-  const handleClick = () => {
-    addLiveStack(dispatch);
   };
 
   const handleAdd = () => {
@@ -58,7 +53,7 @@ const ColorStackGenerator = (props) => {
       );
     });
   };
-
+  console.log(liveStacks);
   return (
     <div>
       <div className={css.header}>

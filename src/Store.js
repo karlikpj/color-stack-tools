@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from "react";
-import generateSpread from "./utils/generateSpread";
 
 import uswdsTokens from "./tokens/uswds-tokens";
 
@@ -17,12 +16,7 @@ const propertiesToArray = (obj) => {
   return paths(obj);
 };
 
-const getItemsList = (tokens) => {
-  return Object.keys(tokens);
-};
-
-const defaultStack = { red: [], green: [], blue: [] };
-defaultStack.red = uswdsTokens.system.red;
+const defaultStack = { green: [], blue: [] };
 defaultStack.green = uswdsTokens.system.green;
 defaultStack.blue = uswdsTokens.system.blue;
 
@@ -33,14 +27,6 @@ const initialState = {
   stackSize: 10,
   tokens: uswdsTokens,
   tokenSections: propertiesToArray(uswdsTokens),
-};
-
-const stackData = (id, color, stack) => {
-  return {
-    id: id,
-    target: color,
-    stack,
-  };
 };
 
 export const Store = createContext(initialState);
@@ -76,9 +62,15 @@ const exportStack = (state, val) => {
 const loadLiveStack = (state, val) => {
   const { tokens, liveStacks } = state;
   let newStack = clone(liveStacks);
-  const sec = val.split(".");
   let newSet = {};
-  newSet[`${sec[1]}`] = tokens[sec[0]][sec[1]];
+
+  if (val.indexOf(".") !== -1) {
+    const sec = val.split(".");
+    newSet[`${sec[1]}`] = tokens[sec[0]][sec[1]];
+  } else {
+    newSet[`${val}`] = tokens[val];
+  }
+
   newStack = {
     ...newStack,
     ...newSet,
