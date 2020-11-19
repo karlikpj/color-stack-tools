@@ -22,8 +22,8 @@ const SelectColor = (props) => {
   const setColor = (e) => {
     e.preventDefault();
     const config = {
-      targetColor,
       colorName,
+      stack: makeObject(targetColor),
     };
     addLiveStack(config, dispatch);
     setModalState({ isOpen: false, content: null }, dispatch);
@@ -37,9 +37,17 @@ const SelectColor = (props) => {
     setColorName(e.target.value);
   };
 
+  const makeObject = (targetColor) => {
+    const colorArray = generateSpread(targetColor, ~~(stackSize / 2));
+    return colorArray.map((color, index) => {
+      const colorGrade = grade(luminance(...hexToRgb(color)));
+      return { token: `${colorName}-${colorGrade}`, value: color };
+    });
+  };
+
   const lum = luminance(...hexToRgb(targetColor));
   const colorGrade = grade(lum);
-  const stack = generateSpread(targetColor, ~~(stackSize / 2));
+
   return (
     <div style={{ width: 550 }}>
       <h2>Select Base Color for Stack</h2>
@@ -53,7 +61,7 @@ const SelectColor = (props) => {
       </div>
       <div className={css.row}>
         <div className={css.column}>
-          <ColorChips stack={stack} />
+          <ColorChips stack={makeObject(targetColor)} />
         </div>
 
         <div className={css.column}>

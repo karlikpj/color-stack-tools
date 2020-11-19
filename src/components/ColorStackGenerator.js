@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ColorStack from "./ColorStack";
 import ModalWindow from "./ModalWindow";
 import SelectColor from "./SelectColor";
 
 import { Store } from "../Store";
-import { addLiveStack, setModalState, setStackSize } from "../Actions";
+import { addLiveStack, setModalState, loadLiveStack } from "../Actions";
 
 import css from "../styles/styles.less";
 
@@ -13,52 +13,67 @@ const ColorStackGenerator = (props) => {
   const {
     stackSize,
     liveStacks,
+    tokenSections,
     isModalOpen = false,
     modalContent = null,
   } = state;
+
+  const [stackSelected, setStackSelected] = useState();
+
   const handleSelect = (e) => {
-    setStackSize(e.target.value, dispatch);
+    setStackSelected(e.target.value);
   };
 
   const handleClick = () => {
     addLiveStack(dispatch);
   };
 
-  const handleCart = () => {
+  const handleAdd = () => {
     setModalState({ isOpen: true, content: <SelectColor /> }, dispatch);
   };
-  const isDisabled = liveStacks.length > 0;
+
+  const handleLoad = (e) => {
+    loadLiveStack(stackSelected, dispatch);
+  };
+
   const dropDown = (
-    <select value={stackSize} onChange={handleSelect} disabled={isDisabled}>
-      <option value="4">4</option>
-      <option value="6">6</option>
-      <option value="8">8</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
+    <select value={stackSelected} onChange={handleSelect}>
+      {tokenSections.map((item) => {
+        return (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        );
+      })}
     </select>
   );
 
   const makeStacks = (stacks) => {
-    return stacks.map((stack, index) => {
+    const stackNames = Object.keys(stacks);
+    return stackNames.map((stack, index) => {
       return (
-        <div className={css.wrapper} key={`STACK_${index}_${index}`}>
-          <ColorStack stackObject={stack} />
+        <div className={css.wrapper} key={`STACK_${stack}_${index}`}>
+          <ColorStack stackObject={stacks[stack]} id={stack} />
         </div>
       );
     });
   };
+
   return (
     <div>
       <div className={css.header}>
-        <h1>Color Stack Generator / Editor</h1>
+        <h1>USWDS Color and Theme Generator / Editor</h1>
         <ul className={css.controls}>
-          <li>stack size</li>
+          <li>Stacks</li>
           <li>{dropDown}</li>
-          <li>&nbsp;</li>
           <li>
-            <a href="#" className={css.button} onClick={handleCart}>
-              add
+            <a href="#" className={css.button} onClick={handleLoad}>
+              load
+            </a>
+          </li>
+          <li>
+            <a href="#" className={css.button} onClick={handleAdd}>
+              new
             </a>
           </li>
         </ul>
