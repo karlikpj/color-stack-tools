@@ -4,10 +4,18 @@ export const setStackSize = (value, dispatch) => {
     val: value,
   });
 };
+
 export const addLiveStack = (value, dispatch) => {
   dispatch({
     type: "ADD_LIVESTACK",
     config: value,
+  });
+};
+
+export const loadLiveStack = (value, dispatch) => {
+  dispatch({
+    type: "LOAD_LIVESTACK",
+    val: value,
   });
 };
 

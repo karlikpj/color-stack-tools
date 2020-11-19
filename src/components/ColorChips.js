@@ -12,36 +12,43 @@ import { setModalState } from "../Actions";
 import css from "../styles/styles.less";
 
 const ColorChips = (props) => {
-  const { stack, target, isActive = false } = props;
+  const { stack, id, isActive = false } = props;
   const { dispatch } = useContext(Store);
 
   const changeColor = (color) => {
     if (!isActive) return;
     setModalState(
-      { isOpen: true, content: <ChangeColor color={color} target={target} /> },
+      {
+        isOpen: true,
+        content: <ChangeColor color={color} id={id} name={name} />,
+      },
       dispatch
     );
   };
 
-  const stackChip = (color, index) => {
-    const lum = luminance(...hexToRgb(color));
-    const colorGrade = grade(lum);
+  const stackChip = (obj, index) => {
+    const color = obj.value;
+    const name = obj.token;
+
+    const lum = color ? luminance(...hexToRgb(color)) : 0.0;
+    const colorGrade = color ? grade(lum) : "invalid";
     return (
       <li
         className={`${css.stackItem} ${
           colorGrade === "invalid" ? css.invalid : null
         }`}
-        key={`LT_${color}_${index}`}
+        key={`LT_${color}_${name}`}
       >
         <div className={css.chipHex}>
           <div
             className={css.chip}
-            onClick={() => changeColor(color)}
+            onClick={() => {
+              if (colorGrade !== "invalid") changeColor(color, name);
+            }}
             style={{ backgroundColor: color }}
           ></div>
           <div className={css.colortag}>{color}</div>
           <div className={css.lumtag}>
-            {" "}
             {colorGrade !== "invalid" ? colorGrade : "--"}
           </div>
         </div>

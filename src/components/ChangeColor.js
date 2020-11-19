@@ -10,7 +10,7 @@ import { setStackChip, setModalState } from "../Actions";
 import css from "../styles/styles.less";
 
 const ChangeColor = (props) => {
-  const { color, target } = props;
+  const { color, id, name } = props;
   const { dispatch } = useContext(Store);
   const [targetColor, setTargetColor] = useState(color);
 
@@ -19,7 +19,8 @@ const ChangeColor = (props) => {
     const config = {
       newcolor: targetColor,
       color,
-      target,
+      id,
+      name,
     };
     setStackChip(config, dispatch);
     setModalState({ isOpen: false, content: null }, dispatch);

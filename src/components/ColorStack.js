@@ -7,26 +7,20 @@ import { deleteLiveStack, exportStack } from "../Actions";
 import css from "../styles/styles.less";
 
 const ColorStack = (props) => {
-  const { stackObject } = props;
+  const { stackObject, id } = props;
   const { dispatch } = useContext(Store);
 
   const handleDelete = () => {
-    deleteLiveStack(stackObject.target, dispatch);
+    deleteLiveStack(id, dispatch);
   };
 
   const handleExport = () => {
-    exportStack(stackObject, dispatch);
+    exportStack(id, dispatch);
   };
 
   const memoizedColorChips = useMemo(
-    () => (
-      <ColorChips
-        isActive
-        stack={stackObject.stack}
-        target={stackObject.target}
-      />
-    ),
-    [stackObject.stack]
+    () => <ColorChips isActive stack={stackObject} id={id} />,
+    [stackObject]
   );
 
   return (
@@ -34,7 +28,7 @@ const ColorStack = (props) => {
       <a href="#" className={css.delete} onClick={(e) => handleDelete(e)}>
         X
       </a>
-      <h3>{stackObject.id}</h3>
+      <h3>{id}</h3>
       {memoizedColorChips}
       <a href="#" className={css.export} onClick={(e) => handleExport(e)}>
         export
