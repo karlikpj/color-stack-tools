@@ -17,11 +17,13 @@ const ChangeColor = (props) => {
 
   const setColor = (e) => {
     e.preventDefault();
+    const lum = luminance(...hexToRgb(targetColor));
+    const colorGrade = grade(lum);
     const config = {
       newcolor: targetColor,
       color,
       id,
-      name,
+      name: `${id}-${colorGrade}`,
     };
     setStackChip(config, dispatch);
     setModalState({ isOpen: false, content: null }, dispatch);

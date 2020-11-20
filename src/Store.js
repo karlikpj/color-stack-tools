@@ -100,7 +100,8 @@ const setStackChip = (state, config) => {
   const { liveStacks } = state;
   let newStack = clone(liveStacks);
   const d = newStack[id].findIndex((colors) => colors.value === color);
-  newStack[id][d] = { token: name, value: newcolor };
+  newStack[id][d].token = name;
+  newStack[id][d].value = newcolor;
   return { ...state, liveStacks: newStack };
 };
 

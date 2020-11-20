@@ -27,11 +27,13 @@ const ColorChips = (props) => {
   };
 
   const stackChip = (obj, index) => {
-    const color = obj.value;
+    let color = obj.value;
     const name = obj.token;
-
-    const lum = color ? luminance(...hexToRgb(color)) : 0.0;
-    const colorGrade = color ? grade(lum) : "invalid";
+    let lum = 0.0;
+    if (color !== "transparent") {
+      lum = color ? luminance(...hexToRgb(color)) : 0.0;
+    }
+    let colorGrade = color ? grade(lum) : "invalid";
     return (
       <li
         className={`${css.stackItem} ${
