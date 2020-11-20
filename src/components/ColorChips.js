@@ -27,13 +27,17 @@ const ColorChips = (props) => {
   };
 
   const stackChip = (obj, index) => {
-    let color = obj.value;
+    let color = obj.value || obj.default;
+    color = !color ? "--" : color;
+
+    const isColor = color.indexOf("#");
     const name = obj.token;
     let lum = 0.0;
-    if (color !== "transparent") {
-      lum = color ? luminance(...hexToRgb(color)) : 0.0;
+    let colorGrade = "";
+    if (isColor !== -1) {
+      lum = luminance(...hexToRgb(color));
+      colorGrade = grade(lum);
     }
-    let colorGrade = color ? grade(lum) : "invalid";
     return (
       <li
         className={`${css.stackItem} ${
@@ -42,9 +46,14 @@ const ColorChips = (props) => {
         key={`LT_${color}_${name}`}
       >
         <div className={css.chipHex}>
+          {isColor === -1 && color !== "--" && (
+            <div className={css.colortoken}>{name}</div>
+          )}
+
           <div
             className={css.chip}
             onClick={() => {
+              if (isColor === -1) return;
               changeColor(color, name);
             }}
             style={{ backgroundColor: color }}

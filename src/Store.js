@@ -16,8 +16,7 @@ const propertiesToArray = (obj) => {
   return paths(obj);
 };
 
-const defaultStack = { green: [], blue: [] };
-defaultStack.green = uswdsTokens.system.green;
+const defaultStack = { blue: [] };
 defaultStack.blue = uswdsTokens.system.blue;
 
 const initialState = {
