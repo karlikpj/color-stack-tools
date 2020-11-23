@@ -42,15 +42,14 @@ const ColorChips = (props) => {
         }`}
         key={`LT_${color}_${name}`}
       >
-        <div className={css.chipHex}>
-          <div
-            className={css.chip}
-            onClick={() => {
-              if (color === "--") return;
-              changeColor(color, name);
-            }}
-            style={{ backgroundColor: color }}
-          ></div>
+        <div
+          className={css.chipHex}
+          onClick={() => {
+            if (color === "--") return;
+            changeColor(color, name);
+          }}
+        >
+          <div className={css.chip} style={{ backgroundColor: color }}></div>
           <div className={css.colortag}>{color}</div>
           <div className={css.lumtag}>
             {colorGrade !== "invalid" ? colorGrade : "--"}
@@ -78,16 +77,9 @@ const ColorChips = (props) => {
         }`}
         key={`LT_${color}_${name}`}
       >
-        <div className={css.chipHex}>
+        <div className={css.chipPointer}>
           <div className={css.colortoken}>{name}</div>
-          <div
-            className={css.chip}
-            onClick={() => {
-              if (color === "--") return;
-              changeColor(color, name);
-            }}
-            style={{ backgroundColor: color }}
-          ></div>
+          <div className={css.chip} style={{ backgroundColor: color }}></div>
           <div className={css.colortag}>{color}</div>
           <div className={css.lumtag}>
             {colorGrade !== "invalid" ? colorGrade : "--"}
@@ -112,7 +104,15 @@ const ColorChips = (props) => {
     return stackChip(color, index);
   });
 
-  return <ul className={css.colorStack}>{colorStack}</ul>;
+  return (
+    <ul className={css.colorStack}>
+      <li className={css.stackItem}>
+        <div className={css.chipLabel}>hex# value&nbsp;&nbsp;&nbsp;</div>
+        <div className={css.chipLabel}>grade</div>
+      </li>
+      {colorStack}
+    </ul>
+  );
 };
 
 export default ColorChips;

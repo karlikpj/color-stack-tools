@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 
+import LuminanceDisplay from "./LuminanceDisplay";
+
 import grade from "../utils/grade";
 import hexToRgb from "../utils/hexToRgb";
 import luminance from "../utils/luminance";
@@ -10,7 +12,7 @@ import { setStackChip, setModalState } from "../Actions";
 import css from "../styles/styles.less";
 
 const ChangeColor = (props) => {
-  const { color, id, name } = props;
+  const { color, id } = props;
   const { dispatch } = useContext(Store);
   const fcolor = !color ? "#FFFFFF" : color;
   const [targetColor, setTargetColor] = useState(fcolor);
@@ -34,22 +36,28 @@ const ChangeColor = (props) => {
   };
 
   const lum = luminance(...hexToRgb(targetColor));
-  const colorGrade = grade(lum);
 
   return (
     <div style={{ width: 300 }}>
       <h2>Update Color Chip</h2>
+      <p className={css.info}>
+        Tune this color chip by selecting a new hue, or fix a gradient within a
+        color family.
+      </p>
       <div className={css.row}>
         <div className={css.column}>
           <ul className={css.selectorUI}>
-            <li className={css.targetColor}>{targetColor}</li>
+            <li
+              className={css.targetColor}
+              style={{
+                background: targetColor,
+                color: lum < 0.2 ? "#FFF" : "#000",
+              }}
+            >
+              {targetColor}
+            </li>
             <li>
-              <ul className={css.modalItems}>
-                <li>luminance</li>
-                <li className={css.data}>{lum.toFixed(4)}</li>
-                <li>grade</li>
-                <li className={css.data}>{colorGrade}</li>
-              </ul>
+              <LuminanceDisplay targetColor={targetColor} />
             </li>
             <li>
               <input

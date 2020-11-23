@@ -22,21 +22,30 @@
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
   color: @ui_text_0;
   margin-bottom: 16px;
-  padding: 16px 0 12px;
+  padding: 16px 16px 12px;
   width: 100%;
 
   h1 {
-    color: #fff;
-    margin-left: 16px;
+    color: @ui_text_0;
+  }
+
+  p {
+    color: @ui_text_30;
+    margin-top: 5px;
   }
 }
 
 h2 {
-  margin-bottom: 16px;
+  margin: 8px 0 8px;
 }
 
 h3 {
   margin-bottom: 8px;
+}
+
+p.info {
+  margin-bottom: 16px;
+  color: @ui_text_30;
 }
 
 .data {
@@ -47,7 +56,7 @@ h3 {
 
 .controls {
   list-style-type: none;
-  padding: 12px 22px 6px;
+  padding: 12px 0 6px;
   li {
     display: inline-block;
     margin-right: 8px;
@@ -73,7 +82,9 @@ h3 {
 
 .stackItem {
   color: @ui_text_100;
-  margin: 2px;
+  font-size: 14px;
+  font-family: monaco, Consolas, Lucida Console, monospace;
+  margin: 0 0 6px;
   vertical-align: top;
   &.invalid {
     background: #ffd5d5;
@@ -81,12 +92,18 @@ h3 {
 }
 
 .chipHex {
+  cursor: pointer;
   display: inline-block;
-  color: @ui_text_100;
-  font-family: monaco, Consolas, Lucida Console, monospace;
-  font-size: 12px;
-  margin-right: 24px;
-  padding: 1px;
+  &:hover {
+    background: @ui_hover_light;
+  }
+}
+
+.chipPointer {
+  display: inline-block;
+  &:hover {
+    //background: @ui_background_20;
+  }
 }
 
 .chip {
@@ -94,30 +111,40 @@ h3 {
   border-radius: 3px;
   color: @ui_text_100;
   display: inline-block;
-  height: 24px;
+  height: 22px;
   margin-right: 8px;
   padding: 8px;
   position: relative;
   vertical-align: middle;
-  width: 24px;
+  width: 22px;
 }
 
 .lumtag {
   display: inline-block;
   padding: 0 4px;
   text-align: right;
-  width: 60px;
+  width: 75px;
+}
+
+.chipLabel {
+  border-bottom: 1px dotted @gr_30;
+  color: @ui_text_30;
+  display: inline-block;
+  padding: 0;
+  text-align: right;
+  &:first-child {
+    margin: 0 24px 6px 0;
+  }
 }
 
 .colortag {
   display: inline-block;
-  padding: 0 4px;
 }
 
 .colortoken {
   display: inline-block;
   padding: 0 4px;
-  min-width: 165px;
+  min-width: 185px;
 }
 
 .delete {
@@ -179,7 +206,7 @@ input[type="color"] {
 
 .selectorUI {
   list-style-type: none;
-  margin: 0 0 0 16px;
+  margin: 0;
   li {
     padding: 8px 0;
   }

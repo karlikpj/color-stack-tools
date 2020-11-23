@@ -1,6 +1,7 @@
 @import (reference) "./tokens.less";
 
 :global {
+  //baby reset
   *,
   *::before,
   *::after {
@@ -8,16 +9,7 @@
     padding: 0;
     box-sizing: border-box;
   }
-
-  /**
-      @gr_80 25%,
-      @gr_70 25%,
-      @gr_70 50%,
-      @gr_80 50%,
-      @gr_80 75%,
-      @gr_70 75%,
-      @gr_70 100%
-      */
+  //daw baby
 
   body {
     background-image: linear-gradient(
@@ -32,11 +24,15 @@
     );
     background-size: 56.57px 56.57px;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
   }
 
   html {
-    height: 100%;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
   }
 
   a {

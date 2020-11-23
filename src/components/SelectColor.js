@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import ColorChips from "./ColorChips";
+import LuminanceDisplay from "./LuminanceDisplay";
 
 import generateSpread from "../utils/generateSpread";
 import grade from "../utils/grade";
@@ -30,7 +31,14 @@ const SelectColor = (props) => {
   };
 
   const handleColor = (e) => {
-    setTargetColor(e.target.value);
+    const color = e.target.value;
+    const lum = luminance(...hexToRgb(color)).toFixed(2);
+    // prevent all black or white as a base color
+    if (lum > 0.9 || lum < 0.1) {
+      return;
+    } else {
+      setTargetColor(e.target.value);
+    }
   };
 
   const handleUpdate = (e) => {
@@ -39,18 +47,21 @@ const SelectColor = (props) => {
 
   const makeObject = (targetColor) => {
     const colorArray = generateSpread(targetColor, ~~(stackSize / 2));
-    return colorArray.map((color, index) => {
+    return colorArray.map((color) => {
       const colorGrade = grade(luminance(...hexToRgb(color)));
       return { token: `${colorName}-${colorGrade}`, value: color };
     });
   };
 
   const lum = luminance(...hexToRgb(targetColor));
-  const colorGrade = grade(lum);
 
   return (
     <div style={{ width: 550 }}>
-      <h2>Select Base Color for Stack</h2>
+      <h2>Pick a color as the base for this palette.</h2>
+      <p className={css.info}>
+        Colors that don't match a grade value show up in red. You can fix those
+        once you save the base color in this modal.
+      </p>
       <div className={css.form}>
         <label>Color Name </label>
         <input
@@ -65,17 +76,18 @@ const SelectColor = (props) => {
         </div>
 
         <div className={css.column}>
-          <ul className={css.selectorUI}>
-            <li className={css.targetColor}>{targetColor}</li>
+          <ul className={css.selectorUI} style={{ marginLeft: 16 }}>
+            <li
+              className={css.targetColor}
+              style={{
+                background: targetColor,
+                color: lum < 0.2 ? "#FFF" : "#000",
+              }}
+            >
+              {targetColor}
+            </li>
             <li>
-              <ul className={css.modalItems}>
-                <li>luminance</li>
-                <li className={css.data}>{lum.toFixed(4)}</li>
-                <li>grade</li>
-                <li className={css.data}>
-                  {colorGrade !== "invalid" ? colorGrade : "--"}
-                </li>
-              </ul>
+              <LuminanceDisplay targetColor={targetColor} />
             </li>
             <li>
               <input

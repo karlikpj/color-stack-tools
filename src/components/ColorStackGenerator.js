@@ -57,18 +57,24 @@ const ColorStackGenerator = (props) => {
   return (
     <div>
       <div className={css.header}>
-        <h1>USWDS Color and Theme Generator / Editor</h1>
+        <h1>USWDS Color Palette Generator</h1>
+        <p>
+          Tool for creating WCAG accessibile color palettes for use in web media
+          and content
+        </p>
         <ul className={css.controls}>
-          <li>Stacks</li>
+          <li>Select:</li>
           <li>{dropDown}</li>
           <li>
             <a href="#" className={css.button} onClick={handleLoad}>
-              load
+              Load
             </a>
           </li>
+          <li></li>
+          <li>Create:</li>
           <li>
             <a href="#" className={css.button} onClick={handleAdd}>
-              new
+              New
             </a>
           </li>
         </ul>
