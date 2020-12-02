@@ -59,27 +59,10 @@ const ColorChips = (props) => {
     );
   };
 
-  const findNested = (obj, query) => {
-    for (var key in obj) {
-      var value = obj[key];
-      if (typeof value === "object") {
-        return findNested(value, query);
-      }
-      if (typeof value === "string") {
-        //console.log(obj, query);
-        return obj;
-      }
-    }
-  };
-
   const getObject = (query) => {
     const { tokens } = state;
     const { system } = tokens;
-
     const colorStackNames = Object.keys(system);
-    let isFound = false;
-
-    console.log("1--------");
     console.log(query);
     for (let i = 0; i < colorStackNames.length; i++) {
       const stackname = colorStackNames[i];
@@ -93,7 +76,6 @@ const ColorChips = (props) => {
     const color = obj.default || obj.token || "--";
     const linkedColor = color;
     const name = obj.token;
-    let lum = 0.0;
     let colorGrade = "";
 
     const tokenObject = getObject(color);
@@ -114,9 +96,6 @@ const ColorChips = (props) => {
             style={{ backgroundColor: tokenObject.value }}
           ></div>
           <div className={css.colortag}>{linkedColor}</div>
-          <div className={css.lumtag}>
-            {colorGrade !== "invalid" ? colorGrade : "--"}
-          </div>
         </div>
       </li>
     );

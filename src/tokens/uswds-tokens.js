@@ -4,12 +4,6 @@ const uswdsTokens = {
       token: "red",
       default: "red-50v",
     },
-  ],
-  basic: [
-    {
-      token: "red",
-      default: "red-50v",
-    },
     {
       token: "orange",
       default: "orange-40v",
