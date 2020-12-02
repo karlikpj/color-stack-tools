@@ -1,5 +1,5 @@
 const uswdsTokens = {
-  basic: [
+  adebug: [
     {
       token: "red",
       default: "red-50v",

@@ -59,36 +59,46 @@ const ColorChips = (props) => {
     );
   };
 
-  const getObject = (obj, query) => {
-    console.log(obj);
+  const findNested = (obj, query) => {
     for (var key in obj) {
       var value = obj[key];
       if (typeof value === "object") {
-        return getObject(value, query);
+        return findNested(value, query);
       }
-      if (
-        typeof value === "string" &&
-        value.toLowerCase().indexOf(query.toLowerCase()) > -1
-      ) {
+      if (typeof value === "string") {
+        //console.log(obj, query);
         return obj;
       }
     }
   };
 
-  const makePointerChip = (obj) => {
+  const getObject = (query) => {
     const { tokens } = state;
     const { system } = tokens;
-    //console.log(tokens);
-    const color = obj.default || "--";
 
-    const tokenObject = getObject(tokens.system, color);
+    const colorStackNames = Object.keys(system);
+    let isFound = false;
 
+    console.log("1--------");
+    console.log(query);
+    for (let i = 0; i < colorStackNames.length; i++) {
+      const stackname = colorStackNames[i];
+      const objSort = system[stackname].find((o) => o.token === query);
+      console.log(objSort);
+      if (objSort) return objSort;
+    }
+  };
+
+  const makePointerChip = (obj) => {
+    const color = obj.default || obj.token || "--";
     const linkedColor = color;
-    console.log(color, tokenObject?.value);
-
     const name = obj.token;
     let lum = 0.0;
     let colorGrade = "";
+
+    const tokenObject = getObject(color);
+
+    console.log(tokenObject);
 
     return (
       <li
@@ -99,7 +109,10 @@ const ColorChips = (props) => {
       >
         <div className={css.chipPointer}>
           <div className={css.colortoken}>{name}</div>
-          <div className={css.chip} style={{ backgroundColor: color }}></div>
+          <div
+            className={css.chip}
+            style={{ backgroundColor: tokenObject.value }}
+          ></div>
           <div className={css.colortag}>{linkedColor}</div>
           <div className={css.lumtag}>
             {colorGrade !== "invalid" ? colorGrade : "--"}
