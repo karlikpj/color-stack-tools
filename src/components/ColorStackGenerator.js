@@ -53,7 +53,7 @@ const ColorStackGenerator = (props) => {
       );
     });
   };
-  console.log(liveStacks);
+
   return (
     <div>
       <div className={css.header}>

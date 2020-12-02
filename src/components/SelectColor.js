@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import ColorChips from "./ColorChips";
+import StackSample from "./StackSample";
 import LuminanceDisplay from "./LuminanceDisplay";
 
 import generateSpread from "../utils/generateSpread";
@@ -19,8 +19,9 @@ const SelectColor = (props) => {
   const [targetColor, setTargetColor] = useState(color);
   const [colorName, setColorName] = useState("undefined");
   const { stackSize } = state;
-
+  const isDisabled = colorName === "undefined";
   const setColor = (e) => {
+    if (isDisabled) return;
     e.preventDefault();
     const config = {
       colorName,
@@ -56,27 +57,33 @@ const SelectColor = (props) => {
   const lum = luminance(...hexToRgb(targetColor));
 
   return (
-    <div style={{ width: 550 }}>
+    <div style={{ width: 350 }}>
       <h2>Pick a color as the base for this palette.</h2>
       <p className={css.info}>
-        Colors that don't match a grade value show up in red. You can fix those
-        once you save the base color in this modal.
+        You will be able to tun the individual color chips once you save the
+        base color.
       </p>
-      <div className={css.form}>
-        <label>Color Name </label>
-        <input
-          className={css.colorName}
-          value={colorName}
-          onChange={(e) => handleUpdate(e)}
-        />
-      </div>
+
       <div className={css.row}>
         <div className={css.column}>
-          <ColorChips stack={makeObject(targetColor)} />
-        </div>
+          <div className={css.form}>
+            <label>Color Name </label>
+            <input
+              className={css.colorName}
+              value={colorName}
+              onChange={(e) => handleUpdate(e)}
+            />
+          </div>
 
-        <div className={css.column}>
-          <ul className={css.selectorUI} style={{ marginLeft: 16 }}>
+          <ul className={css.selectorUI}>
+            <li>
+              <StackSample stack={makeObject(targetColor)} />
+              <input
+                type="color"
+                value={targetColor}
+                onChange={(e) => handleColor(e)}
+              />
+            </li>
             <li
               className={css.targetColor}
               style={{
@@ -89,13 +96,6 @@ const SelectColor = (props) => {
             <li>
               <LuminanceDisplay targetColor={targetColor} />
             </li>
-            <li>
-              <input
-                type="color"
-                value={targetColor}
-                onChange={(e) => handleColor(e)}
-              />
-            </li>
           </ul>
         </div>
       </div>
@@ -103,7 +103,9 @@ const SelectColor = (props) => {
         <div className={css.column}>
           <a
             href="#"
-            className={`${css.button} ${css.modal}`}
+            className={`${css.button} ${css.modal} ${
+              isDisabled ? css.disabled : null
+            }`}
             onClick={(e) => setColor(e)}
           >
             Save Color

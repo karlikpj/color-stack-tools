@@ -59,13 +59,33 @@ const ColorChips = (props) => {
     );
   };
 
+  const getObject = (obj, query) => {
+    console.log(obj);
+    for (var key in obj) {
+      var value = obj[key];
+      if (typeof value === "object") {
+        return getObject(value, query);
+      }
+      if (
+        typeof value === "string" &&
+        value.toLowerCase().indexOf(query.toLowerCase()) > -1
+      ) {
+        return obj;
+      }
+    }
+  };
+
   const makePointerChip = (obj) => {
     const { tokens } = state;
     const { system } = tokens;
+    //console.log(tokens);
     const color = obj.default || "--";
-    //const linkedColor = system.map((stack)=>{
 
-    //});
+    const tokenObject = getObject(tokens.system, color);
+
+    const linkedColor = color;
+    console.log(color, tokenObject?.value);
+
     const name = obj.token;
     let lum = 0.0;
     let colorGrade = "";
@@ -80,7 +100,7 @@ const ColorChips = (props) => {
         <div className={css.chipPointer}>
           <div className={css.colortoken}>{name}</div>
           <div className={css.chip} style={{ backgroundColor: color }}></div>
-          <div className={css.colortag}>{color}</div>
+          <div className={css.colortag}>{linkedColor}</div>
           <div className={css.lumtag}>
             {colorGrade !== "invalid" ? colorGrade : "--"}
           </div>

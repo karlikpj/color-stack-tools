@@ -106,6 +106,26 @@ p.info {
   }
 }
 
+.sampleChip {
+  border: 1px solid @gr_50;
+  border-radius: 3px;
+  color: @ui_text_100;
+  display: inline-block;
+  height: 22px;
+  margin-right: 8px;
+  padding: 8px;
+  position: relative;
+  vertical-align: middle;
+  width: 22px;
+}
+
+.sampleItem,
+.chipPointer {
+  display: inline-block;
+}
+.sampleStack {
+  display: inline-block;
+}
 .chip {
   border: 1px solid @gr_50;
   border-radius: 3px;
@@ -194,13 +214,22 @@ input[type="color"] {
     background: @gr_50;
     border: 1px solid @gr_10;
     color: @ui_text_0;
+    &.disabled {
+      background: @ui_background_20;
+      border: 1px solid @gr_50;
+      color: @gr_30;
+    }
   }
   &.modal {
     float: right;
   }
   &:disabled {
-    background: @ui_background_70;
-    color: @gr_50;
+    background: @ui_background_20;
+    color: @gr_30;
+  }
+  &.disabled {
+    background: @ui_background_20;
+    color: @gr_30;
   }
 }
 
