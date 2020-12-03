@@ -2334,6 +2334,216 @@ const uswdsTokens = {
         value: "#1c1d1f",
       },
     ],
+    cerulean: [
+      {
+        token: "cerulean-5",
+        value: "#e9eff2",
+      },
+      {
+        token: "cerulean-10",
+        value: "#d4e7f2",
+      },
+      {
+        token: "cerulean-20",
+        value: "#99cae4",
+      },
+      {
+        token: "cerulean-30",
+        value: "#66afd7",
+      },
+      {
+        token: "cerulean-40",
+        value: "#3395ca",
+      },
+      {
+        token: "cerulean-50",
+        value: "#007bbd",
+      },
+      {
+        token: "cerulean-60",
+        value: "#006297",
+      },
+      {
+        token: "cerulean-70",
+        value: "#004971",
+      },
+      {
+        token: "cerulean-80",
+        value: "#00314b",
+      },
+      {
+        token: "cerulean-90",
+        value: "#001825",
+      },
+    ],
+    teal: [
+      {
+        token: "teal-5",
+        value: "#d1faf7",
+      },
+      {
+        token: "teal-10",
+        value: "#c6eaeb",
+      },
+      {
+        token: "teal-20",
+        value: "#a3dce0",
+      },
+      {
+        token: "teal-30",
+        value: "#44bfc6",
+      },
+      {
+        token: "teal-40",
+        value: "#28a1a9",
+      },
+      {
+        token: "teal-50",
+        value: "#2c8187",
+      },
+      {
+        token: "teal-60",
+        value: "#15696f",
+      },
+      {
+        token: "teal-70",
+        value: "#0c5155",
+      },
+      {
+        token: "teal-80",
+        value: "#173d40",
+      },
+      {
+        token: "teal-90",
+        value: "#0c2122",
+      },
+    ],
+    "dark-blue": [
+      {
+        token: "dark-blue-5",
+        value: "#eef2fb",
+      },
+      {
+        token: "dark-blue-10",
+        value: "#d7e3f9",
+      },
+      {
+        token: "dark-blue-20",
+        value: "#b0bfdd",
+      },
+      {
+        token: "dark-blue-30",
+        value: "#90ace4",
+      },
+      {
+        token: "dark-blue-40",
+        value: "#718fd0",
+      },
+      {
+        token: "dark-blue-50",
+        value: "#4372d0",
+      },
+      {
+        token: "dark-blue-60",
+        value: "#385ca8",
+      },
+      {
+        token: "dark-blue-70",
+        value: "#263f6e",
+      },
+      {
+        token: "dark-blue-80",
+        value: "#1a2f5b",
+      },
+      {
+        token: "dark-blue-90",
+        value: "#0e1f3f",
+      },
+    ],
+    cranberry: [
+      {
+        token: "cranberry-5",
+        value: "#ffebef",
+      },
+      {
+        token: "cranberry-10",
+        value: "#fddde6",
+      },
+      {
+        token: "cranberry-20",
+        value: "#ffbdcd",
+      },
+      {
+        token: "cranberry-30",
+        value: "#f57a99",
+      },
+      {
+        token: "cranberry-40",
+        value: "#fa4774",
+      },
+      {
+        token: "cranberry-50",
+        value: "#e7184c",
+      },
+      {
+        token: "cranberry-60",
+        value: "#bb0e3d",
+      },
+      {
+        token: "cranberry-70",
+        value: "#8a0e2d",
+      },
+      {
+        token: "cranberry-80",
+        value: "#5c091e",
+      },
+      {
+        token: "cranberry-90",
+        value: "#2e040f",
+      },
+    ],
+    "gold-warm": [
+      {
+        token: "gold-warm-5",
+        value: "#fbedd5",
+      },
+      {
+        token: "gold-warm-10",
+        value: "#f4e5c3",
+      },
+      {
+        token: "gold-warm-20",
+        value: "#f4c82a",
+      },
+      {
+        token: "gold-warm-30",
+        value: "#d9a01c",
+      },
+      {
+        token: "gold-warm-30",
+        value: "#d5a129",
+      },
+      {
+        token: "gold-warm-50",
+        value: "#996e0a",
+      },
+      {
+        token: "gold-warm-60",
+        value: "#7d5b14",
+      },
+      {
+        token: "gold-warm-70",
+        value: "#614505",
+      },
+      {
+        token: "gold-warm-80",
+        value: "#463207",
+      },
+      {
+        token: "gold-warm-90",
+        value: "#281c01",
+      },
+    ],
   },
 };
 

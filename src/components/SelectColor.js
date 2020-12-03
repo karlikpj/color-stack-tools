@@ -35,7 +35,7 @@ const SelectColor = (props) => {
     const color = e.target.value;
     const lum = luminance(...hexToRgb(color)).toFixed(2);
     // prevent all black or white as a base color
-    if (lum > 0.9 || lum < 0.1) {
+    if (lum > 0.9 || lum < 0.02) {
       return;
     } else {
       setTargetColor(e.target.value);
