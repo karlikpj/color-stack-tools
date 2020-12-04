@@ -2544,6 +2544,48 @@ const uswdsTokens = {
         value: "#281c01",
       },
     ],
+    slate: [
+      {
+        token: "slate-5",
+        value: "#f2f2f2",
+      },
+      {
+        token: "slate-10",
+        value: "#e3e3e4",
+      },
+      {
+        token: "slate-20",
+        value: "#c7c8ca",
+      },
+      {
+        token: "slate-30",
+        value: "#abacaf",
+      },
+      {
+        token: "slate-40",
+        value: "#8f9195",
+      },
+      {
+        token: "slate-50",
+        value: "#74767b",
+      },
+      {
+        token: "slate-60",
+        value: "#585b5f",
+      },
+      {
+        token: "slate-70",
+        value: "#454649",
+      },
+      {
+        token: "slate-80",
+        value: "#2e2f31",
+      },
+      {
+        token: "slate-90",
+        value: "#171718",
+      },
+    ],
   },
 };
 
