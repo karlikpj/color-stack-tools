@@ -14,7 +14,6 @@ import css from "../styles/styles.less";
 const ColorChips = (props) => {
   const { stack, id, isActive = false } = props;
   const { state, dispatch } = useContext(Store);
-
   const changeColor = (color) => {
     if (!isActive) return;
     setModalState(
@@ -63,11 +62,9 @@ const ColorChips = (props) => {
     const { tokens } = state;
     const { system } = tokens;
     const colorStackNames = Object.keys(system);
-    console.log(query);
     for (let i = 0; i < colorStackNames.length; i++) {
       const stackname = colorStackNames[i];
       const objSort = system[stackname].find((o) => o.token === query);
-      console.log(objSort);
       if (objSort) return objSort;
     }
   };
@@ -104,6 +101,7 @@ const ColorChips = (props) => {
   const stackChip = (obj) => {
     let color = obj.value || "--";
     let hasDefault = obj?.default;
+
     const notColor = color.indexOf("#");
 
     if (!notColor && !hasDefault) {
@@ -112,19 +110,40 @@ const ColorChips = (props) => {
     if (notColor && hasDefault) return makePointerChip(obj);
   };
 
-  const colorStack = stack.map((color, index) => {
-    return stackChip(color, index);
-  });
-
-  return (
-    <ul className={css.colorStack}>
-      <li className={css.stackItem}>
-        <div className={css.chipLabel}>hex# value&nbsp;&nbsp;&nbsp;</div>
-        <div className={css.chipLabel}>grade</div>
-      </li>
-      {colorStack}
-    </ul>
+  const colorHeader = (
+    <li className={css.stackItem}>
+      <div className={css.chipLabel}>hex# value&nbsp;&nbsp;&nbsp;</div>
+      <div className={css.chipLabel}>grade</div>
+    </li>
   );
+
+  const pointerHeader = (
+    <li className={css.stackItem}>
+      <div className={css.pointerLabel}>token name&nbsp;&nbsp;&nbsp;</div>
+      <div className={css.chipLabel}>token color</div>
+    </li>
+  );
+
+  const colorStack = () => {
+    let headerType = 0;
+    let color = stack[0].value || "--";
+    let hasDefault = stack[0]?.default;
+    const notColor = color.indexOf("#");
+
+    if (notColor && hasDefault) headerType = 1;
+
+    const colorArray = stack.map((color, index) => {
+      return stackChip(color, index);
+    });
+    return (
+      <ul className={css.colorStack}>
+        {headerType > 0 ? pointerHeader : colorHeader}
+        {colorArray}
+      </ul>
+    );
+  };
+
+  return colorStack();
 };
 
 export default ColorChips;
