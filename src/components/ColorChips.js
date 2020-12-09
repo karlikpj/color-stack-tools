@@ -77,8 +77,6 @@ const ColorChips = (props) => {
 
     const tokenObject = getObject(color);
 
-    console.log(tokenObject);
-
     return (
       <li
         className={`${css.stackItem} ${

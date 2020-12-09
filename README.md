@@ -5,13 +5,9 @@
 # Color Stack Builder and other Goodies
 
 ![splash](./splash.png)
-![splash](./splash2.png)
-
 [Color stack generator](http://uswds-stacks.surge.sh/) and tools to build, consume and work with the design tokens from the USWDS - [USWDS](https://designsystem.digital.gov/design-tokens/color/overview/)
 
 This is a simple tool to edit and build colors stacks and export that data. You start with a base hue value, which is then spread by it's stack size and evaluates the 'grade' values. Once a base color is saved you can then fine tune colors in that stack that fail the gradient check - which aligns a rating to the colors based on its luminance values. Those number values translate to WCAG AA/AAA contrast accessibility which is baked into the USWDS.
-
-You can name the stacks at creation, which can either override or add to the USWDS color tokens (TBD) A simple export on each stack is availble to open a json file which matches the token structure in a new window. Ideally this would be a full token object that could be imported into any project to override the USWDS.
 
 These grade values do not follow a linear scale along the luminance, rather between fixed points as listed int he table below. The colors picked by the USWDS adhear to this specification and state that the colors are not a set formal formula but manually edited to match the ratings for each grade.
 
@@ -30,6 +26,10 @@ These grade values do not follow a linear scale along the luminance, rather betw
 | `90`  |      `0.005`      |      `0.015`      |
 | `100` |      `0.000`      |      `0.000`      |
 
+##
+
+_luminance chart from uswds_
+
 #
 
 ## How to use
@@ -43,6 +43,14 @@ While you move the color selection the application will always check the luminan
 Add or Delete stacks as needed.
 
 Stack size can only be set before you create any stacks - once there is one active or on the page / that select is disabled.
+
+<table><tr>
+<td><img src='./splash4.png' width=240></td>
+<td><img src='./splash2.png' width=240></td>
+<td><img src='./splash3.png' width=240></td>
+</tr></table>
+
+_screen shots_
 
 ## In Development
 
