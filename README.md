@@ -1,5 +1,5 @@
 ![react](https://img.shields.io/badge/react-16.13.1-green.svg?style=flat-square)
-![version](https://img.shields.io/badge/version-0.00.1-51b1c5.svg?style=flat-square)
+![version](https://img.shields.io/badge/version-0.00.2-51b1c5.svg?style=flat-square)
 ![stage-0](https://img.shields.io/badge/ECMAScript-6-c55197.svg?style=flat-square)
 
 # Color Stack Builder and other Goodies

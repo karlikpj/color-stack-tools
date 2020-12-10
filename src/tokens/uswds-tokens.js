@@ -303,8 +303,130 @@ const uswdsTokens = {
     },
     {
       token: "accent-warm-dark",
-      value: "#c05600",
       default: "orange-50v",
+    },
+    {
+      token: "accent-warm-darker",
+      default: "orange-60",
+    },
+  ],
+  ncitheme: [
+    {
+      token: "base-lightest",
+      default: "slate-5",
+    },
+    {
+      token: "base-lighter",
+      default: "slate-10",
+    },
+    {
+      token: "base-light",
+      default: "slate-30",
+    },
+    {
+      token: "base",
+      default: "slate-50",
+    },
+    {
+      token: "base-dark",
+      default: "slate-60",
+    },
+    {
+      token: "base-darker",
+      default: "slate-70",
+    },
+    {
+      token: "base-darkest",
+      default: "slate-90",
+    },
+    {
+      token: "ink",
+      default: "slate-90",
+      setting: "$theme-color-base-ink",
+    },
+    {
+      token: "primary-lighter",
+      default: "cerulean-10",
+    },
+    {
+      token: "primary-light",
+      default: "cerulean-30",
+    },
+    {
+      token: "primary",
+      default: "dark-blue-60",
+    },
+    {
+      token: "primary-vivid",
+      default: "dark-blue-60",
+    },
+    {
+      token: "primary-dark",
+      default: "cerulean-70",
+    },
+    {
+      token: "primary-darker",
+      default: "dark-blue-80",
+    },
+    {
+      token: "secondary-lighter",
+      default: "cranberry-10",
+    },
+    {
+      token: "secondary-light",
+      default: "cranberry-30",
+    },
+    {
+      token: "secondary",
+      default: "cranberry-50",
+    },
+    {
+      token: "secondary-vivid",
+      default: "cranberry-50",
+    },
+    {
+      token: "secondary-dark",
+      default: "cranberry-60",
+    },
+    {
+      token: "secondary-darker",
+      default: "cranberry-70",
+    },
+    {
+      token: "accent-cool-lighter",
+      default: "teal-5",
+    },
+    {
+      token: "accent-cool-light",
+      default: "teal-20",
+    },
+    {
+      token: "accent-cool",
+      default: "teal-30",
+    },
+    {
+      token: "accent-cool-dark",
+      default: "teal-40",
+    },
+    {
+      token: "accent-cool-darker",
+      default: "teal-60",
+    },
+    {
+      token: "accent-warm-lighter",
+      default: "gold-warm-10",
+    },
+    {
+      token: "accent-warm-light",
+      default: "gold-warm-20",
+    },
+    {
+      token: "accent-warm",
+      default: "gold-warm-30",
+    },
+    {
+      token: "accent-warm-dark",
+      default: "gold-warm-50",
     },
     {
       token: "accent-warm-darker",
