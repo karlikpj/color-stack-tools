@@ -58,6 +58,14 @@ const exportStack = (state, val) => {
   return { ...state };
 };
 
+const formatStack = (state, val) => {
+  const { liveStacks } = state;
+  let newStack = {};
+  newStack[`${val}`] = clone(liveStacks[val]);
+  window.open().document.write(JSON.stringify(newStack));
+  return { ...state };
+};
+
 const loadLiveStack = (state, val) => {
   const { tokens, liveStacks } = state;
   let newStack = clone(liveStacks);
@@ -112,6 +120,8 @@ const reducer = (state, action) => {
       return deleteLiveStack(state, action.val);
     case "EXPORT_STACK":
       return exportStack(state, action.val);
+    case "FORMAT_STACK":
+      return formatStack(state, action.val);
     case "LOAD_LIVESTACK":
       return loadLiveStack(state, action.val);
     case "SET_MODAL_STATE":

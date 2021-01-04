@@ -19,6 +19,13 @@ export const exportStack = (value, dispatch) => {
   });
 };
 
+export const formatStack = (value, dispatch) => {
+  dispatch({
+    type: "FORMAT_STACK",
+    val: value,
+  });
+};
+
 export const loadLiveStack = (value, dispatch) => {
   dispatch({
     type: "LOAD_LIVESTACK",

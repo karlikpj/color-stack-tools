@@ -187,6 +187,100 @@ const uswdsTokens = {
       default: "gray-30",
     },
   ],
+  ncistate: [
+    {
+      token: "info-lighter",
+      default: "cyan-5",
+    },
+    {
+      token: "info-light",
+      default: "cyan-20",
+    },
+    {
+      token: "info",
+      default: "cyan-30v",
+    },
+    {
+      token: "info-dark",
+      default: "cyan-40v",
+    },
+    {
+      token: "info-darker",
+      default: "blue-cool-60",
+    },
+    {
+      token: "error-lighter",
+      default: "red-warm-10",
+    },
+    {
+      token: "error-light",
+      default: "red-warm-30v",
+    },
+    {
+      token: "error",
+      default: "red-warm-50v",
+    },
+    {
+      token: "error-dark",
+      default: "red-60v",
+    },
+    {
+      token: "error-darker",
+      default: "red-70",
+    },
+    {
+      token: "warning-lighter",
+      default: "yellow-5",
+    },
+    {
+      token: "warning-light",
+      default: "yellow-10v",
+    },
+    {
+      token: "warning",
+      default: "gold-20v",
+    },
+    {
+      token: "warning-dark",
+      default: "gold-30v",
+    },
+    {
+      token: "warning-darker",
+      default: "gold-50v",
+    },
+    {
+      token: "success-lighter",
+      default: "green-cool-5",
+    },
+    {
+      token: "success-light",
+      default: "green-cool-20v",
+    },
+    {
+      token: "success",
+      default: "green-cool-40v",
+    },
+    {
+      token: "success-dark",
+      default: "green-cool-50",
+    },
+    {
+      token: "success-darker",
+      default: "green-cool-60",
+    },
+    {
+      token: "disabled-light",
+      default: "gray-10",
+    },
+    {
+      token: "disabled",
+      default: "gray-20",
+    },
+    {
+      token: "disabled-dark",
+      default: "gray-30",
+    },
+  ],
   theme: [
     {
       token: "base-lightest",
