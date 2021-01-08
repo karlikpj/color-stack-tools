@@ -45,7 +45,6 @@ const ColorStackGenerator = (props) => {
 
   const makeStacks = (stacks) => {
     const stackNames = Object.keys(stacks);
-    // console.log(liveStacks);
     return stackNames.map((stack, index) => {
       return (
         <div className={css.wrapper} key={`STACK_${stack}_${index}`}>

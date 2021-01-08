@@ -65,7 +65,6 @@ const exportStack = (state, val) => {
   let newStack = {};
   newStack[`${val}`] = clone(liveStacks[val]);
   const stackColors = jsonstring(newStack);
-  console.log(stackColors);
   //window.open().document.write(jsonstring(newStack));
   return { ...state };
 };

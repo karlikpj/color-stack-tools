@@ -17,7 +17,6 @@ const StackLoader = (props) => {
 
   const makeColorChip = (obj) => {
     const colorItem = obj.map((color, index) => {
-      console.log(color);
       if (Array.isArray(color.value)) {
         return (
           <li key={`sub_${color.name}`}>
