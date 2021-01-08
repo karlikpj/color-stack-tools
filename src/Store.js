@@ -1,6 +1,11 @@
 import React, { createContext, useReducer } from "react";
 
 import uswdsTokens from "./tokens/uswds-tokens";
+import cranberry from "./tokens/cranberry";
+import blue_cool from "./tokens/blue-cool";
+import mint from "./tokens/mint";
+import gray_warm from "./tokens/gray-warm";
+import orange_warm from "./tokens/orange-warm";
 
 const propertiesToArray = (obj) => {
   const isObject = (val) => typeof val === "object" && !Array.isArray(val);
@@ -16,8 +21,8 @@ const propertiesToArray = (obj) => {
   return paths(obj);
 };
 
-const defaultStack = { blue: [] };
-defaultStack.blue = uswdsTokens.system.blue;
+const defaultStack = { gray_warm, blue_cool, orange_warm, mint };
+//defaultStack.blue = uswdsTokens.system.blue;
 
 const initialState = {
   isModalOpen: false,
@@ -26,12 +31,17 @@ const initialState = {
   stackSize: 10,
   tokens: uswdsTokens,
   tokenSections: propertiesToArray(uswdsTokens),
+  cranberry,
 };
 
 export const Store = createContext(initialState);
 
+export const jsonstring = (array) => {
+  return JSON.stringify(array);
+};
+
 export const clone = (array) => {
-  return JSON.parse(JSON.stringify(array));
+  return JSON.parse(jsonstring(array));
 };
 
 const addLiveStack = (state, config) => {
@@ -54,7 +64,9 @@ const exportStack = (state, val) => {
   const { liveStacks } = state;
   let newStack = {};
   newStack[`${val}`] = clone(liveStacks[val]);
-  window.open().document.write(JSON.stringify(newStack));
+  const stackColors = jsonstring(newStack);
+  console.log(stackColors);
+  //window.open().document.write(jsonstring(newStack));
   return { ...state };
 };
 
@@ -62,7 +74,7 @@ const formatStack = (state, val) => {
   const { liveStacks } = state;
   let newStack = {};
   newStack[`${val}`] = clone(liveStacks[val]);
-  window.open().document.write(JSON.stringify(newStack));
+  window.open().document.write(jsonstring(newStack));
   return { ...state };
 };
 
