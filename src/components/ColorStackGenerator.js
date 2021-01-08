@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import StackLoader from "./StackLoader";
+import ColorStack from "./ColorStack";
 import ModalWindow from "./ModalWindow";
 import SelectColor from "./SelectColor";
 
@@ -48,7 +48,7 @@ const ColorStackGenerator = (props) => {
     return stackNames.map((stack, index) => {
       return (
         <div className={css.wrapper} key={`STACK_${stack}_${index}`}>
-          <StackLoader stackObject={liveStacks[stack]} id={stack.category} />
+          <ColorStack stackObject={liveStacks[stack]} id={stack} />
         </div>
       );
     });

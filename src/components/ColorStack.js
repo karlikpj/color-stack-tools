@@ -1,8 +1,8 @@
 import React, { useContext, useMemo } from "react";
-import ColorChips from "./ColorChips";
+import StackLoader from "./Stackloader";
 
 import { Store } from "../Store";
-import { deleteLiveStack, exportStack, formatStack } from "../Actions";
+import { deleteLiveStack, exportStack } from "../Actions";
 
 import css from "../styles/styles.less";
 
@@ -18,12 +18,8 @@ const ColorStack = (props) => {
     exportStack(id, dispatch);
   };
 
-  const handleFormat = () => {
-    formatStack(id, dispatch);
-  };
-
   const memoizedColorChips = useMemo(
-    () => <ColorChips isActive stack={stackObject} id={id} />,
+    () => <StackLoader stackObject={stackObject} id={id} />,
     [stackObject]
   );
 
@@ -32,14 +28,9 @@ const ColorStack = (props) => {
       <a href="#" className={css.delete} onClick={(e) => handleDelete(e)}>
         X
       </a>
-      <h3>{id}</h3>
       {memoizedColorChips}
       <a href="#" className={css.export} onClick={(e) => handleExport(e)}>
         export
-      </a>
-      <br />
-      <a href="#" className={css.export} onClick={(e) => handleFormat(e)}>
-        format
       </a>
     </div>
   );

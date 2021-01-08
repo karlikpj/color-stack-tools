@@ -78,9 +78,12 @@ const StackLoader = (props) => {
     const colorArray = makeColorChip(colors, colorName);
 
     return (
-      <div className={css.stackWrapper}>
+      <div>
         <h3>family: {colorName}</h3>
-        <ul className={css.colorStack}>{colorArray}</ul>
+        <ul className={css.colorStack}>
+          <li className={css.chipLabel}>{stackObject.global.category}</li>
+          {colorArray}
+        </ul>
       </div>
     );
   };
