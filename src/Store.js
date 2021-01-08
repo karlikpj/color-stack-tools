@@ -1,37 +1,35 @@
 import React, { createContext, useReducer } from "react";
 
-import uswdsTokens from "./tokens/uswds-tokens";
-import cranberry from "./tokens/cranberry";
-import blue_cool from "./tokens/blue-cool";
-import mint from "./tokens/mint";
-import gray_warm from "./tokens/gray-warm";
-import orange_warm from "./tokens/orange-warm";
+//import uswdsTokens from "./tokens/uswds-tokens";
+import tokens from "./tokens/";
 
 const propertiesToArray = (obj) => {
   const isObject = (val) => typeof val === "object" && !Array.isArray(val);
   const addDelimiter = (a, b) => (a ? `${a}.${b}` : b);
   const paths = (obj = {}, head = "") => {
     return Object.entries(obj).reduce((product, [key, value]) => {
+      //return key;
       let fullPath = addDelimiter(head, key);
       return isObject(value)
-        ? product.concat(paths(value, fullPath))
+        ? product.concat(fullPath)
         : product.concat(fullPath);
     }, []);
   };
   return paths(obj);
 };
 
-const defaultStack = { gray_warm, blue_cool, orange_warm, mint };
-//defaultStack.blue = uswdsTokens.system.blue;
+const defaultStack = {};
+//defaultStack.blue = tokens.blue;
+const tokenOptions = propertiesToArray(defaultStack);
+console.log(tokenOptions);
 
 const initialState = {
   isModalOpen: false,
   liveStacks: defaultStack,
   modalContent: null,
   stackSize: 10,
-  tokens: uswdsTokens,
-  tokenSections: propertiesToArray(uswdsTokens),
-  cranberry,
+  tokens,
+  tokenSections: propertiesToArray(tokens),
 };
 
 export const Store = createContext(initialState);
