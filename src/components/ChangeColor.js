@@ -12,9 +12,9 @@ import { setStackChip, setModalState } from "../Actions";
 import css from "../styles/styles.less";
 
 const ChangeColor = (props) => {
-  const { color, id } = props;
+  const { color, stackObject, id } = props;
   const { dispatch } = useContext(Store);
-  const fcolor = !color ? "#FFFFFF" : color;
+  const fcolor = !color ? "#FFFFFF" : color.value;
   const [targetColor, setTargetColor] = useState(fcolor);
 
   const setColor = (e) => {
@@ -25,7 +25,7 @@ const ChangeColor = (props) => {
       newcolor: targetColor,
       color,
       id,
-      name: `${id}-${colorGrade}`,
+      colorGrade,
     };
     setStackChip(config, dispatch);
     setModalState({ isOpen: false, content: null }, dispatch);
@@ -36,10 +36,11 @@ const ChangeColor = (props) => {
   };
 
   const lum = luminance(...hexToRgb(targetColor));
-
+  console.log(targetColor);
   return (
     <div style={{ width: 300 }}>
       <h2>Update Color Chip</h2>
+      <h5>{stackObject.global.category}</h5>
       <p className={css.info}>
         Tune this color chip by selecting a new hue, or fix a gradient within a
         color family.
@@ -54,7 +55,7 @@ const ChangeColor = (props) => {
                 color: lum < 0.2 ? "#FFF" : "#000",
               }}
             >
-              {targetColor}
+              <span dangerouslySetInnerHTML={{ __html: targetColor }} />
             </li>
             <li>
               <LuminanceDisplay targetColor={targetColor} />

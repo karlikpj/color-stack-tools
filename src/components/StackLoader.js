@@ -15,6 +15,21 @@ const StackLoader = (props) => {
   const { stackObject, id, isActive = false } = props;
   const { state, dispatch } = useContext(Store);
 
+  const changeColor = (color) => {
+    if (!isActive) return;
+    let stackId = stackObject?.global.category;
+    let name = stackObject?.props[0].name;
+    setModalState(
+      {
+        isOpen: true,
+        content: (
+          <ChangeColor color={color} id={name} stackObject={stackObject} />
+        ),
+      },
+      dispatch
+    );
+  };
+
   const makeColorChip = (obj) => {
     const colorItem = obj.map((color, index) => {
       if (Array.isArray(color.value)) {
@@ -33,7 +48,12 @@ const StackLoader = (props) => {
       if (!color.value) return;
       return (
         <li key={`${color.value}_${color.name}`} className={css.stackItem}>
-          <div className={css.chipHex}>
+          <div
+            className={css.chipHex}
+            onClick={() => {
+              changeColor(color);
+            }}
+          >
             <div
               className={css.chip}
               style={{ backgroundColor: color.value }}

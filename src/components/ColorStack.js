@@ -19,19 +19,21 @@ const ColorStack = (props) => {
   };
 
   const memoizedColorChips = useMemo(
-    () => <StackLoader stackObject={stackObject} id={id} />,
+    () => <StackLoader isActive stackObject={stackObject} id={id} />,
     [stackObject]
   );
 
+  /**
+      <a href="#" className={css.export} onClick={(e) => handleExport(e)}>
+        export
+      </a>
+   */
   return (
     <div className={css.stackWrapper}>
       <a href="#" className={css.delete} onClick={(e) => handleDelete(e)}>
         X
       </a>
       {memoizedColorChips}
-      <a href="#" className={css.export} onClick={(e) => handleExport(e)}>
-        export
-      </a>
     </div>
   );
 };

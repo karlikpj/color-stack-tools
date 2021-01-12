@@ -18,8 +18,9 @@ const propertiesToArray = (obj) => {
   return paths(obj);
 };
 
-const defaultStack = {};
-//defaultStack.blue = tokens.blue;
+const defaultStack = { blue_cool: {} };
+defaultStack.blue_cool = tokens.blue_cool;
+
 const tokenOptions = propertiesToArray(defaultStack);
 console.log(tokenOptions);
 
@@ -112,12 +113,23 @@ const setModalState = (state, config) => {
 };
 
 const setStackChip = (state, config) => {
-  const { newcolor, color, id, name } = config;
+  const { newcolor, color, id, colorGrade } = config;
   const { liveStacks } = state;
   let newStack = clone(liveStacks);
-  const d = newStack[id].findIndex((colors) => colors.value === color);
-  newStack[id][d].token = name;
-  newStack[id][d].value = newcolor;
+  const colorName = Object.keys(newStack);
+  let stacks = newStack[colorName].props[0].value;
+
+  console.log(color);
+
+  const d = newStack[colorName].props[0].value.findIndex((colors) => {
+    console.log(colors);
+    return colors.value === color.value;
+  });
+  console.log(d);
+
+  newStack[colorName].props[0].value[d].name = colorGrade;
+  newStack[colorName].props[0].value[d].value = newcolor;
+
   return { ...state, liveStacks: newStack };
 };
 
