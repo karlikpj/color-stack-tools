@@ -48,7 +48,7 @@ const ColorStackGenerator = (props) => {
     return stackNames.map((stack, index) => {
       return (
         <div className={css.wrapper} key={`STACK_${stack}_${index}`}>
-          <ColorStack stackObject={stacks[stack]} id={stack} />
+          <ColorStack stackObject={liveStacks[stack]} id={stack} />
         </div>
       );
     });

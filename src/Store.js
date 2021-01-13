@@ -1,44 +1,53 @@
 import React, { createContext, useReducer } from "react";
 
-import uswdsTokens from "./tokens/uswds-tokens";
+//import uswdsTokens from "./tokens/uswds-tokens";
+import tokens from "./tokens/";
 
 const propertiesToArray = (obj) => {
   const isObject = (val) => typeof val === "object" && !Array.isArray(val);
   const addDelimiter = (a, b) => (a ? `${a}.${b}` : b);
   const paths = (obj = {}, head = "") => {
     return Object.entries(obj).reduce((product, [key, value]) => {
+      //return key;
       let fullPath = addDelimiter(head, key);
       return isObject(value)
-        ? product.concat(paths(value, fullPath))
+        ? product.concat(fullPath)
         : product.concat(fullPath);
     }, []);
   };
   return paths(obj);
 };
 
-const defaultStack = { blue: [] };
-defaultStack.blue = uswdsTokens.system.blue;
+const defaultStack = { blue_cool: {} };
+defaultStack.blue_cool = tokens.blue_cool;
+
+const tokenOptions = propertiesToArray(defaultStack);
+console.log(tokenOptions);
 
 const initialState = {
   isModalOpen: false,
   liveStacks: defaultStack,
   modalContent: null,
   stackSize: 10,
-  tokens: uswdsTokens,
-  tokenSections: propertiesToArray(uswdsTokens),
+  tokens,
+  tokenSections: propertiesToArray(tokens),
 };
 
 export const Store = createContext(initialState);
 
+export const jsonstring = (array) => {
+  return JSON.stringify(array);
+};
+
 export const clone = (array) => {
-  return JSON.parse(JSON.stringify(array));
+  return JSON.parse(jsonstring(array));
 };
 
 const addLiveStack = (state, config) => {
-  const { colorName, stack } = config;
+  const colorName = config.props.name;
   const { liveStacks } = state;
   let newStack = clone(liveStacks);
-  newStack[`${colorName}`] = stack;
+  newStack[`${colorName}`] = config;
 
   return { ...state, liveStacks: newStack };
 };
@@ -54,7 +63,8 @@ const exportStack = (state, val) => {
   const { liveStacks } = state;
   let newStack = {};
   newStack[`${val}`] = clone(liveStacks[val]);
-  window.open().document.write(JSON.stringify(newStack));
+  const stackColors = jsonstring(newStack);
+  window.open().document.write(jsonstring(newStack));
   return { ...state };
 };
 
@@ -62,7 +72,7 @@ const formatStack = (state, val) => {
   const { liveStacks } = state;
   let newStack = {};
   newStack[`${val}`] = clone(liveStacks[val]);
-  window.open().document.write(JSON.stringify(newStack));
+  window.open().document.write(jsonstring(newStack));
   return { ...state };
 };
 
@@ -103,12 +113,26 @@ const setModalState = (state, config) => {
 };
 
 const setStackChip = (state, config) => {
-  const { newcolor, color, id, name } = config;
+  const { newcolor, color, colorGrade } = config;
   const { liveStacks } = state;
   let newStack = clone(liveStacks);
-  const d = newStack[id].findIndex((colors) => colors.value === color);
-  newStack[id][d].token = name;
-  newStack[id][d].value = newcolor;
+  const colorName = Object.keys(newStack);
+
+  let d = newStack[colorName].props[0].value.findIndex((colors) => {
+    return colors.value === color;
+  });
+  // some items are double nested for vivid variations
+  if (d < 0) {
+    d = newStack[colorName].props[0].value[10].value.findIndex((colors) => {
+      return colors.value === color;
+    });
+    newStack[colorName].props[0].value[10].value[d].name = colorGrade;
+    newStack[colorName].props[0].value[10].value[d].value = newcolor;
+  } else {
+    newStack[colorName].props[0].value[d].name = colorGrade;
+    newStack[colorName].props[0].value[d].value = newcolor;
+  }
+
   return { ...state, liveStacks: newStack };
 };
 

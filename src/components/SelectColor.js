@@ -14,31 +14,54 @@ import { addLiveStack, setModalState } from "../Actions";
 import css from "../styles/styles.less";
 
 const SelectColor = (props) => {
-  const { color = "#cccccc" } = props;
+  const { color = "#cccccc", vcolor = "#eeeeee" } = props;
   const { state, dispatch } = useContext(Store);
+  const [stackType, setStackType] = useState("default");
   const [targetColor, setTargetColor] = useState(color);
+  const [vividColor, setVividColor] = useState(vcolor);
   const [colorName, setColorName] = useState("undefined");
   const { stackSize } = state;
   const isDisabled = colorName === "undefined";
+
   const setColor = (e) => {
     if (isDisabled) return;
     e.preventDefault();
+    let parentColor = makeObject(targetColor);
+    if (stackType === "default") {
+      let variantColor = makeObject(vividColor);
+      variantColor.splice(-1, 1);
+      parentColor[10] = { name: "vivid", value: variantColor };
+    }
     const config = {
-      colorName,
-      stack: makeObject(targetColor),
+      global: {
+        category: `system-color-${colorName}`,
+      },
+      props: [
+        {
+          name: colorName,
+          value: parentColor,
+        },
+      ],
+      options: {
+        file: "system-color",
+      },
     };
     addLiveStack(config, dispatch);
     setModalState({ isOpen: false, content: null }, dispatch);
   };
 
-  const handleColor = (e) => {
+  const handleColor = (e, type) => {
     const color = e.target.value;
     const lum = luminance(...hexToRgb(color)).toFixed(2);
     // prevent all black or white as a base color
     if (lum > 0.9 || lum < 0.02) {
       return;
     } else {
-      setTargetColor(e.target.value);
+      if (type === 1) {
+        setTargetColor(e.target.value);
+      } else {
+        setVividColor(e.target.value);
+      }
     }
   };
 
@@ -50,11 +73,12 @@ const SelectColor = (props) => {
     const colorArray = generateSpread(targetColor, ~~(stackSize / 2));
     return colorArray.map((color) => {
       const colorGrade = grade(luminance(...hexToRgb(color)));
-      return { token: `${colorName}-${colorGrade}`, value: color };
+      return { name: `${colorGrade}`, value: color };
     });
   };
 
   const lum = luminance(...hexToRgb(targetColor));
+  const vlum = luminance(...hexToRgb(vividColor));
 
   return (
     <div style={{ width: 350 }}>
@@ -63,7 +87,6 @@ const SelectColor = (props) => {
         You will be able to tun the individual color chips once you save the
         base color.
       </p>
-
       <div className={css.row}>
         <div className={css.column}>
           <div className={css.form}>
@@ -81,7 +104,7 @@ const SelectColor = (props) => {
               <input
                 type="color"
                 value={targetColor}
-                onChange={(e) => handleColor(e)}
+                onChange={(e) => handleColor(e, 1)}
               />
             </li>
             <li
@@ -99,6 +122,39 @@ const SelectColor = (props) => {
           </ul>
         </div>
       </div>
+
+      <div className={css.row}>
+        <div className={css.column}>
+          <div className={css.form}>
+            <label>Vivid Variation </label>
+            {stackType === "default" ? (
+              <ul className={css.selectorUI}>
+                <li>
+                  <StackSample stack={makeObject(vividColor)} />
+                  <input
+                    type="color"
+                    value={vividColor}
+                    onChange={(e) => handleColor(e, 2)}
+                  />
+                </li>
+                <li
+                  className={css.targetColor}
+                  style={{
+                    background: vividColor,
+                    color: vlum < 0.2 ? "#FFF" : "#000",
+                  }}
+                >
+                  {vividColor}
+                </li>
+                <li>
+                  <LuminanceDisplay targetColor={vividColor} />
+                </li>
+              </ul>
+            ) : null}
+          </div>
+        </div>
+      </div>
+
       <div className={css.row}>
         <div className={css.column}>
           <a

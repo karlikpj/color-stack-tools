@@ -1,0 +1,40 @@
+{
+  "global": {
+    "category": "system-color-cranberry"
+  },
+  "props": [
+    {
+      "name": "cranberry",
+      "value": [
+        { "name": "5", "value": "#ffebef" },
+        { "name": "10", "value": "#fddde6" },
+        { "name": "20", "value": "#ffbdcd" },
+        { "name": "30", "value": "#f57a99" },
+        { "name": "40", "value": "#fa4774" },
+        { "name": "50", "value": "#e7184c" },
+        { "name": "60", "value": "#bb0e3d" },
+        { "name": "70", "value": "#8a0e2d" },
+        { "name": "80", "value": "#5c091e" },
+        { "name": "90", "value": "#2e040f" },
+        {
+          "name": "vivid",
+          "value": [
+            { "name": "5", "value": "#ffebef" },
+            { "name": "10", "value": "#fddde6" },
+            { "name": "20", "value": "#ffbdcd" },
+            { "name": "30", "value": "#f57a99" },
+            { "name": "40", "value": "#fa4774" },
+            { "name": "50", "value": "#e7184c" },
+            { "name": "60", "value": "#bb0e3d" },
+            { "name": "70", "value": "#8a0e2d" },
+            { "name": "80", "value": "#5c091e" },
+            { "name": "90", "value": false }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "file": "system-color"
+  }
+}
