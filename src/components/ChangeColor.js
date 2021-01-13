@@ -16,6 +16,7 @@ const ChangeColor = (props) => {
   const { dispatch } = useContext(Store);
   const fcolor = !color ? "#FFFFFF" : color.value;
   const [targetColor, setTargetColor] = useState(fcolor);
+  const [isDisabled, setDisabled] = useState(true);
 
   const setColor = (e) => {
     e.preventDefault();
@@ -23,8 +24,7 @@ const ChangeColor = (props) => {
     const colorGrade = grade(lum);
     const config = {
       newcolor: targetColor,
-      color,
-      id,
+      color: color.value,
       colorGrade,
     };
     setStackChip(config, dispatch);
@@ -35,8 +35,8 @@ const ChangeColor = (props) => {
     setTargetColor(e.target.value);
   };
 
-  const lum = luminance(...hexToRgb(targetColor));
-  console.log(targetColor);
+  const lum = luminance(...hexToRgb(targetColor)).toFixed(2);
+  const colorGrade = grade(lum);
   return (
     <div style={{ width: 300 }}>
       <h2>Update Color Chip</h2>
@@ -72,13 +72,24 @@ const ChangeColor = (props) => {
       </div>
       <div className={css.row}>
         <div className={css.column}>
-          <a
-            href="#"
-            className={`${css.button} ${css.modal}`}
-            onClick={(e) => setColor(e)}
-          >
-            Save Color
-          </a>
+          {colorGrade !== "invalid" ? (
+            <a
+              href="#"
+              className={`${css.button} ${css.modal}`}
+              onClick={(e) => setColor(e)}
+            >
+              Save Color
+            </a>
+          ) : (
+            <a
+              href="#"
+              className={`${css.disabled} ${css.button} ${css.modal}`}
+              onClick={() => {}}
+              disabled
+            >
+              Save Color
+            </a>
+          )}
         </div>
       </div>
     </div>

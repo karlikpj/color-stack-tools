@@ -34,6 +34,9 @@ const ColorStack = (props) => {
         X
       </a>
       {memoizedColorChips}
+      <a href="#" className={css.export} onClick={(e) => handleExport(e)}>
+        export
+      </a>
     </div>
   );
 };

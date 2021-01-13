@@ -64,7 +64,7 @@ const exportStack = (state, val) => {
   let newStack = {};
   newStack[`${val}`] = clone(liveStacks[val]);
   const stackColors = jsonstring(newStack);
-  //window.open().document.write(jsonstring(newStack));
+  window.open().document.write(jsonstring(newStack));
   return { ...state };
 };
 
@@ -113,22 +113,25 @@ const setModalState = (state, config) => {
 };
 
 const setStackChip = (state, config) => {
-  const { newcolor, color, id, colorGrade } = config;
+  const { newcolor, color, colorGrade } = config;
   const { liveStacks } = state;
   let newStack = clone(liveStacks);
   const colorName = Object.keys(newStack);
-  let stacks = newStack[colorName].props[0].value;
 
-  console.log(color);
-
-  const d = newStack[colorName].props[0].value.findIndex((colors) => {
-    console.log(colors);
-    return colors.value === color.value;
+  let d = newStack[colorName].props[0].value.findIndex((colors) => {
+    return colors.value === color;
   });
-  console.log(d);
-
-  newStack[colorName].props[0].value[d].name = colorGrade;
-  newStack[colorName].props[0].value[d].value = newcolor;
+  // some items are double nested for vivid variations
+  if (d < 0) {
+    d = newStack[colorName].props[0].value[10].value.findIndex((colors) => {
+      return colors.value === color;
+    });
+    newStack[colorName].props[0].value[10].value[d].name = colorGrade;
+    newStack[colorName].props[0].value[10].value[d].value = newcolor;
+  } else {
+    newStack[colorName].props[0].value[d].name = colorGrade;
+    newStack[colorName].props[0].value[d].value = newcolor;
+  }
 
   return { ...state, liveStacks: newStack };
 };

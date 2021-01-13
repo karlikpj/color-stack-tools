@@ -50,7 +50,7 @@ const SelectColor = (props) => {
     const colorArray = generateSpread(targetColor, ~~(stackSize / 2));
     return colorArray.map((color) => {
       const colorGrade = grade(luminance(...hexToRgb(color)));
-      return { token: `${colorName}-${colorGrade}`, value: color };
+      return { name: `${colorGrade}`, value: color };
     });
   };
 
