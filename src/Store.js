@@ -44,10 +44,10 @@ export const clone = (array) => {
 };
 
 const addLiveStack = (state, config) => {
-  const { colorName, stack } = config;
+  const colorName = config.props.name;
   const { liveStacks } = state;
   let newStack = clone(liveStacks);
-  newStack[`${colorName}`] = stack;
+  newStack[`${colorName}`] = config;
 
   return { ...state, liveStacks: newStack };
 };
