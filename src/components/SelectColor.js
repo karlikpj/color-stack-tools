@@ -29,6 +29,7 @@ const SelectColor = (props) => {
     let parentColor = makeObject(targetColor);
     if (stackType === "default") {
       let variantColor = makeObject(vividColor);
+      variantColor.splice(-1, 1);
       parentColor[10] = { name: "vivid", value: variantColor };
     }
     const config = {
@@ -86,7 +87,6 @@ const SelectColor = (props) => {
         You will be able to tun the individual color chips once you save the
         base color.
       </p>
-
       <div className={css.row}>
         <div className={css.column}>
           <div className={css.form}>
@@ -127,28 +127,30 @@ const SelectColor = (props) => {
         <div className={css.column}>
           <div className={css.form}>
             <label>Vivid Variation </label>
-            <ul className={css.selectorUI}>
-              <li>
-                <StackSample stack={makeObject(vividColor)} />
-                <input
-                  type="color"
-                  value={vividColor}
-                  onChange={(e) => handleColor(e, 2)}
-                />
-              </li>
-              <li
-                className={css.targetColor}
-                style={{
-                  background: vividColor,
-                  color: vlum < 0.2 ? "#FFF" : "#000",
-                }}
-              >
-                {vividColor}
-              </li>
-              <li>
-                <LuminanceDisplay targetColor={vividColor} />
-              </li>
-            </ul>
+            {stackType === "default" ? (
+              <ul className={css.selectorUI}>
+                <li>
+                  <StackSample stack={makeObject(vividColor)} />
+                  <input
+                    type="color"
+                    value={vividColor}
+                    onChange={(e) => handleColor(e, 2)}
+                  />
+                </li>
+                <li
+                  className={css.targetColor}
+                  style={{
+                    background: vividColor,
+                    color: vlum < 0.2 ? "#FFF" : "#000",
+                  }}
+                >
+                  {vividColor}
+                </li>
+                <li>
+                  <LuminanceDisplay targetColor={vividColor} />
+                </li>
+              </ul>
+            ) : null}
           </div>
         </div>
       </div>
