@@ -78,6 +78,19 @@ These grade values do not follow a linear scale along the luminance, rather betw
 | `90`  |      `0.005`      |      `0.015`      |
 | `100` |      `0.000`      |      `0.000`      |
 
+#
+
+### Note for grey_xxx color families
+
+Not documented in their site but these grades are listed in the grey_xxx color familes. This scale has been updated with the ranges set from their palette and only applies to the grey scales.
+
+| grade | minimum luminance | maximum luminance |
+| ----- | :---------------: | :---------------: |
+| `1`   |     `0.9722`      |     `0.9879`      |
+| `2`   |     `0.9443`      |     `0.9722`      |
+| `3`   |     `0.9204`      |     `0.9443`      |
+| `4`   |     `0.8946`      |     `0.9204`      |
+
 ##
 
 _luminance chart from uswds_

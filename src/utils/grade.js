@@ -2,7 +2,17 @@
 const grade = (lum) => {
   let gd = "invalid";
   if (lum >= 1) gd = 0;
-  if (lum >= 0.85 && lum <= 0.93) gd = 5;
+  /**
+   * not documented in their site but these grades
+   * are listed in the grey_xxx color familes - and
+   * their paletts contain only one color set
+   */
+  if (lum >= 0.9722 && lum <= 0.9879) gd = 1;
+  if (lum >= 0.9443 && lum <= 0.9722) gd = 2;
+  if (lum >= 0.9204 && lum <= 0.9443) gd = 3;
+  if (lum >= 0.8946 && lum <= 0.9204) gd = 4;
+  /** end lower grade listing */
+  if (lum >= 0.85 && lum <= 0.8946) gd = 5;
   if (lum >= 0.75 && lum <= 0.82) gd = 10;
   if (lum >= 0.5 && lum <= 0.65) gd = 20;
   if (lum >= 0.35 && lum <= 0.45) gd = 30;
