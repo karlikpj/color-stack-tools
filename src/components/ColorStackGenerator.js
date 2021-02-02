@@ -15,6 +15,7 @@ const ColorStackGenerator = (props) => {
     tokenSections,
     isModalOpen = false,
     modalContent = null,
+    demo,
   } = state;
 
   const [stackSelected, setStackSelected] = useState(tokenSections[0]);
@@ -31,8 +32,22 @@ const ColorStackGenerator = (props) => {
     loadLiveStack(stackSelected, dispatch);
   };
 
+  const demoStyle = {
+    background: demo.background,
+    color: demo.foreground,
+  };
+  const buttonStyle = {
+    background: demo.primary,
+    color: demo.foreground,
+  };
+  const dropStyle = {
+    background: demo.foreground,
+    color: demo.background,
+    borderColor: demo.rimary,
+  };
+
   const dropDown = (
-    <select value={stackSelected} onChange={handleSelect}>
+    <select value={stackSelected} style={dropStyle} onChange={handleSelect}>
       {tokenSections.map((item) => {
         return (
           <option key={item} value={item}>
@@ -56,7 +71,7 @@ const ColorStackGenerator = (props) => {
 
   return (
     <div>
-      <div className={css.header}>
+      <div className={css.header} style={demoStyle}>
         <h1>USWDS Color Palette Generator</h1>
         <p>
           Tool for creating WCAG accessibile color palettes for use in web media
@@ -66,14 +81,24 @@ const ColorStackGenerator = (props) => {
           <li>Select:</li>
           <li>{dropDown}</li>
           <li>
-            <a href="#" className={css.button} onClick={handleLoad}>
+            <a
+              href="#"
+              className={css.button}
+              style={buttonStyle}
+              onClick={handleLoad}
+            >
               Load
             </a>
           </li>
           <li></li>
           <li>Create:</li>
           <li>
-            <a href="#" className={css.button} onClick={handleAdd}>
+            <a
+              href="#"
+              className={css.button}
+              style={buttonStyle}
+              onClick={handleAdd}
+            >
               New
             </a>
           </li>

@@ -1,25 +1,11 @@
 import React, { createContext, useReducer } from "react";
 
+import propertiesToArray from "./utils/propertiesToArray";
 //import uswdsTokens from "./tokens/uswds-tokens";
 import tokens from "./tokens/";
 
-const propertiesToArray = (obj) => {
-  const isObject = (val) => typeof val === "object" && !Array.isArray(val);
-  const addDelimiter = (a, b) => (a ? `${a}.${b}` : b);
-  const paths = (obj = {}, head = "") => {
-    return Object.entries(obj).reduce((product, [key, value]) => {
-      //return key;
-      let fullPath = addDelimiter(head, key);
-      return isObject(value)
-        ? product.concat(fullPath)
-        : product.concat(fullPath);
-    }, []);
-  };
-  return paths(obj);
-};
-
-const defaultStack = { blue_cool: {} };
-defaultStack.blue_cool = tokens.blue_cool;
+const defaultStack = { cranberry: {} };
+defaultStack.cranberry = tokens.cranberry;
 
 const tokenOptions = propertiesToArray(defaultStack);
 console.log(tokenOptions);
@@ -31,6 +17,12 @@ const initialState = {
   stackSize: 10,
   tokens,
   tokenSections: propertiesToArray(tokens),
+  demo: {
+    foreground: "#eeeeee",
+    background: "#333333",
+    primary: "#0d7ea2",
+    secondary: "#28a1a9",
+  },
 };
 
 export const Store = createContext(initialState);
@@ -41,6 +33,13 @@ export const jsonstring = (array) => {
 
 export const clone = (array) => {
   return JSON.parse(jsonstring(array));
+};
+
+const setDemo = (state, config) => {
+  const { demo } = state;
+  let newDemo = clone(demo);
+  newDemo[config.demoSelect] = config.targetColor;
+  return { ...state, demo: newDemo };
 };
 
 const addLiveStack = (state, config) => {
@@ -138,6 +137,8 @@ const setStackChip = (state, config) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "SET_DEMO":
+      return setDemo(state, action.config);
     case "ADD_LIVESTACK":
       return addLiveStack(state, action.config);
     case "DELETE_LIVESTACK":

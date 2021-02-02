@@ -1,3 +1,10 @@
+export const setDemo = (value, dispatch) => {
+  dispatch({
+    type: "SET_DEMO",
+    config: value,
+  });
+};
+
 export const addLiveStack = (value, dispatch) => {
   dispatch({
     type: "ADD_LIVESTACK",

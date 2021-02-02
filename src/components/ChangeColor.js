@@ -5,18 +5,21 @@ import LuminanceDisplay from "./LuminanceDisplay";
 import grade from "../utils/grade";
 import hexToRgb from "../utils/hexToRgb";
 import luminance from "../utils/luminance";
+import propertiesToArray from "../utils/propertiesToArray";
 
 import { Store } from "../Store";
-import { setStackChip, setModalState } from "../Actions";
+import { setStackChip, setModalState, setDemo } from "../Actions";
 
 import css from "../styles/styles.less";
 
 const ChangeColor = (props) => {
   const { color, stackObject, id } = props;
-  const { dispatch } = useContext(Store);
+  const { dispatch, state } = useContext(Store);
+  const { demo } = state;
   const fcolor = !color ? "#FFFFFF" : color.value;
   const [targetColor, setTargetColor] = useState(fcolor);
   const [isDisabled, setDisabled] = useState(true);
+  const [demoSelect, setDemoSelect] = useState("foreground");
 
   const setColor = (e) => {
     e.preventDefault();
@@ -34,6 +37,29 @@ const ChangeColor = (props) => {
   const handleColor = (e) => {
     setTargetColor(e.target.value);
   };
+  const changeDemoColor = (e) => {
+    const config = {
+      targetColor,
+      demoSelect,
+    };
+    setDemo(config, dispatch);
+  };
+  const handleSelect = (e) => {
+    setDemoSelect(e.target.value);
+  };
+  const demoOptions = propertiesToArray(demo);
+  console.log(demo);
+  const dropDown = (
+    <select value={demoSelect} onChange={handleSelect}>
+      {demoOptions.map((item) => {
+        return (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        );
+      })}
+    </select>
+  );
 
   const lum = luminance(...hexToRgb(targetColor)).toFixed(2);
   const colorGrade = grade(lum);
@@ -71,6 +97,17 @@ const ChangeColor = (props) => {
         </div>
       </div>
       <div className={css.row}>
+        <div className={css.column}>{dropDown}</div>
+        <div className={css.column}>
+          {" "}
+          <a
+            href="#"
+            className={`${css.button} ${css.modal}`}
+            onClick={(e) => changeDemoColor(e)}
+          >
+            Set Demo
+          </a>
+        </div>
         <div className={css.column}>
           {colorGrade !== "invalid" ? (
             <a

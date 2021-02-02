@@ -1,89 +1,89 @@
 {
   "global": {
-    "category": "system-color-cranberry"
+    "category": "system-color-teal"
   },
   "props": [
     {
-      "name": "cranberry",
+      "name": "teal",
       "value": [
         {
           "name": 5,
-          "value": "#f8eded"
+          "value": "#d1faf7"
         },
         {
           "name": 10,
-          "value": "#f4dde4"
+          "value": "#c6eaeb"
         },
         {
           "name": 20,
-          "value": "#efbdcd"
+          "value": "#a3dce0"
         },
         {
           "name": 30,
-          "value": "#e599b0"
+          "value": "#44bfc6"
         },
         {
           "name": 40,
-          "value": "#d8668b"
+          "value": "#28a1a9"
         },
         {
           "name": 50,
-          "value": "#d33c6c"
+          "value": "#2c8187"
         },
         {
           "name": 60,
-          "value": "#bf003b"
+          "value": "#15696f"
         },
         {
           "name": 70,
-          "value": "#980030"
+          "value": "#0c5155"
         },
         {
           "name": 80,
-          "value": "#720024"
+          "value": "#173d40"
         },
         {
           "name": 90,
-          "value": "#2d010f"
+          "value": "#0c2122"
         },
         {
           "name": "vivid",
           "value": [
             {
               "name": 5,
-              "value": "#ffebf3"
+              "value": "#d1faf7"
             },
             {
               "name": 10,
-              "value": "#f7dee7"
+              "value": "#c6eaeb"
             },
             {
               "name": 20,
-              "value": "#f3c3d3"
+              "value": "#a3dce0"
             },
             {
               "name": 30,
-              "value": "#df8ba7"
+              "value": "#44bfc6"
             },
             {
               "name": 40,
-              "value": "#db668d"
+              "value": "#28a1a9"
             },
             {
               "name": 50,
-              "value": "#d13d6e"
+              "value": "#2c8187"
             },
             {
               "name": 60,
-              "value": "#b11b4d"
+              "value": "#15696f"
             },
             {
               "name": 70,
-              "value": "#81183b"
+              "value": "#0c5155"
             },
             {
               "name": 80,
-              "value": "#610f2a"
+              "value": "#173d40"
             }
           ]
         }
