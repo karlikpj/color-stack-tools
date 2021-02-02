@@ -18,7 +18,9 @@ const ColorStackGenerator = (props) => {
     demo,
   } = state;
 
-  const [stackSelected, setStackSelected] = useState(tokenSections[0]);
+  const [stackSelected, setStackSelected] = useState(
+    tokenSections[tokenSections.length - 2]
+  );
 
   const handleSelect = (e) => {
     setStackSelected(e.target.value);
