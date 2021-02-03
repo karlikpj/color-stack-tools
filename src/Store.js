@@ -4,8 +4,8 @@ import propertiesToArray from "./utils/propertiesToArray";
 //import uswdsTokens from "./tokens/uswds-tokens";
 import tokens from "./tokens/";
 
-const defaultStack = { cranberry: {} };
-defaultStack.cranberry = tokens.cranberry;
+const defaultStack = { cerulean: {} };
+defaultStack.cerulean = tokens.cerulean;
 
 const tokenOptions = propertiesToArray(defaultStack);
 

@@ -1,0 +1,40 @@
+{
+  "global": {
+    "category": "system-color-cerulean"
+  },
+  "props": [
+    {
+      "name": "cerulean",
+      "value": [
+        { "name": "5", "value": "#e9eff2" },
+        { "name": "10", "value": "#d4e7f2" },
+        { "name": "20", "value": "#99cae4" },
+        { "name": "30", "value": "#66afd7" },
+        { "name": "40", "value": "#3395ca" },
+        { "name": "50", "value": "#007bbd" },
+        { "name": "60", "value": "#006297" },
+        { "name": "70", "value": "#004971" },
+        { "name": "80", "value": "#00314b" },
+        { "name": "90", "value": "#11181d" },
+        {
+          "name": "vivid",
+          "value": [
+            { "name": "5", "value": "#e9eff1" },
+            { "name": "10", "value": "#d4e7f1" },
+            { "name": "20", "value": "#99cae3" },
+            { "name": "30", "value": "#66afd6" },
+            { "name": "40", "value": "#3395ce" },
+            { "name": "50", "value": "#007bbe" },
+            { "name": "60", "value": "#006298" },
+            { "name": "70", "value": "#004972" },
+            { "name": "80", "value": "#00314a" },
+            { "name": "90", "value": false }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "file": "system-color"
+  }
+}

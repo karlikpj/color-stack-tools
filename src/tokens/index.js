@@ -24,12 +24,17 @@ import violet_warm from "./violet-warm";
 import violet from "./violet";
 import yellow from "./yellow";
 
+import cerulean from "./cerulean";
 import cranberry from "./cranberry";
-import teal from "./teal";
 import golden from "./golden";
+import slate from "./slate";
+import teal from "./teal";
+
 const tokens = {
+  cerulean,
   cranberry,
   golden,
+  slate,
   teal,
   blue_cool,
   blue_warm,

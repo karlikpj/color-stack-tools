@@ -1,0 +1,30 @@
+{
+  "global": {
+    "category": "system-color-slate"
+  },
+  "props": [
+    {
+      "name": "slate",
+      "value": [
+        { "name": "1", "value": "#fbfcfd" },
+        { "name": "2", "value": "#f7f9fa" },
+        { "name": "3", "value": "#f5f6f7" },
+        { "name": "4", "value": "#f1f3f6" },
+        { "name": "5", "value": "#f2f2f2" },
+        { "name": "10", "value": "#e3e3e4" },
+        { "name": "20", "value": "#c7c8ca" },
+        { "name": "30", "value": "#abacaf" },
+        { "name": "40", "value": "#8f9195" },
+        { "name": "50", "value": "#74767b" },
+        { "name": "60", "value": "#585b5f" },
+        { "name": "70", "value": "#454649" },
+        { "name": "80", "value": "#2e2d31" },
+        { "name": "90", "value": "#171718" },
+        { "name": "100", "value": "#000000" }
+      ]
+    }
+  ],
+  "options": {
+    "file": "system-color"
+  }
+}
