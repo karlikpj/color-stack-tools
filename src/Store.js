@@ -8,7 +8,6 @@ const defaultStack = { cranberry: {} };
 defaultStack.cranberry = tokens.cranberry;
 
 const tokenOptions = propertiesToArray(defaultStack);
-console.log(tokenOptions);
 
 const initialState = {
   isModalOpen: false,
@@ -112,10 +111,10 @@ const setModalState = (state, config) => {
 };
 
 const setStackChip = (state, config) => {
-  const { newcolor, color, colorGrade } = config;
+  const { newcolor, color, colorGrade, category } = config;
   const { liveStacks } = state;
   let newStack = clone(liveStacks);
-  const colorName = Object.keys(newStack);
+  const colorName = category;
 
   let d = newStack[colorName].props[0].value.findIndex((colors) => {
     return colors.value === color;

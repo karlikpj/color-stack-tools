@@ -26,6 +26,7 @@ const ChangeColor = (props) => {
     const lum = luminance(...hexToRgb(targetColor));
     const colorGrade = grade(lum);
     const config = {
+      category: stackObject.props[0].name,
       newcolor: targetColor,
       color: color.value,
       colorGrade,
@@ -48,7 +49,6 @@ const ChangeColor = (props) => {
     setDemoSelect(e.target.value);
   };
   const demoOptions = propertiesToArray(demo);
-  console.log(demo);
   const dropDown = (
     <select value={demoSelect} onChange={handleSelect}>
       {demoOptions.map((item) => {
