@@ -26,7 +26,11 @@ import yellow from "./yellow";
 
 import cranberry from "./cranberry";
 import teal from "./teal";
+import golden from "./golden";
 const tokens = {
+  cranberry,
+  golden,
+  teal,
   blue_cool,
   blue_warm,
   blue,
@@ -51,8 +55,6 @@ const tokens = {
   violet_warm,
   violet,
   yellow,
-  cranberry,
-  teal,
 };
 
 export default tokens;
