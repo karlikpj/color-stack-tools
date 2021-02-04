@@ -1,0 +1,40 @@
+{
+  "global": {
+    "category": "system-color-navy"
+  },
+  "props": [
+    {
+      "name": "navy",
+      "value": [
+        { "name": "5", "value": "#e7eff8" },
+        { "name": "10", "value": "#d7e5f4" },
+        { "name": "20", "value": "#bcc7d7" },
+        { "name": "30", "value": "#92a9c8" },
+        { "name": "40", "value": "#6c8dbc" },
+        { "name": "50", "value": "#5478ab" },
+        { "name": "60", "value": "#3e6498" },
+        { "name": "70", "value": "#284976" },
+        { "name": "80", "value": "#14315c" },
+        { "name": "90", "value": "#06162d" },
+        {
+          "name": "vivid",
+          "value": [
+            { "name": "5", "value": "#e3effd" },
+            { "name": "10", "value": "#e5f2ff" },
+            { "name": "20", "value": "#bcd3f6" },
+            { "name": "30", "value": "#83b1ec" },
+            { "name": "40", "value": "#5e91d9" },
+            { "name": "50", "value": "#4177c3" },
+            { "name": "60", "value": "#1c5cb5" },
+            { "name": "70", "value": "#13458b" },
+            { "name": "80", "value": "#0c3573" },
+            { "name": "90", "value": false }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "file": "system-color"
+  }
+}

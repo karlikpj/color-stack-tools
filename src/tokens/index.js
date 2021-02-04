@@ -27,15 +27,18 @@ import yellow from "./yellow";
 import cerulean from "./cerulean";
 import cranberry from "./cranberry";
 import golden from "./golden";
-import slate from "./slate";
+import navy from "./navy";
 import teal from "./teal";
+
+import slate from "./slate";
 
 const tokens = {
   cerulean,
   cranberry,
   golden,
-  slate,
+  navy,
   teal,
+  slate,
   blue_cool,
   blue_warm,
   blue,
