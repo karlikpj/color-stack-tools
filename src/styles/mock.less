@@ -1,0 +1,587 @@
+.usa-prose > h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+  clear: both;
+}
+
+.usa-prose > h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+  clear: both;
+}
+
+.usa-prose > * + h6 {
+  margin-top: 1.5em;
+}
+
+.usa-prose > h6 + * {
+  margin-top: 1em;
+}
+
+.usa-prose > h6 {
+  font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial,
+    sans-serif;
+  font-size: 0.87rem;
+  line-height: 1.1;
+  font-weight: normal;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.usa_card__container {
+  font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial,
+    sans-serif;
+  font-size: 1.06rem;
+  line-height: 1.5;
+  background-color: #fff;
+  border-width: 2px;
+  border-color: #e6e6e6;
+  border-style: solid;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  position: relative;
+  border-radius: 0.25rem;
+}
+.usa_card--header-first .usa_card__header {
+  border-top-left-radius: calc(0.25rem - 2px);
+  border-top-right-radius: calc(0.25rem - 2px);
+  padding-bottom: 1rem;
+}
+.usa_card__header {
+  padding: 1.5rem 1.5rem 0.5rem;
+}
+.usa_card--header-first .usa_card__media {
+  order: 0;
+}
+.usa_card__media {
+  order: -1;
+  min-height: 1px;
+}
+.usa_card--header-first .usa_card__body {
+  padding-top: 1rem;
+}
+.usa_card__body {
+  flex: 1 1 0%;
+  padding: 0.5rem 1.5rem;
+  flex-basis: auto;
+}
+.usa_card__body > :only-child,
+.usa_card__header > :only-child {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.usa_card__body > :first-child,
+.usa_card__header > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+.usa_card__body > :last-child,
+.usa_card__header > :last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.usa_card__footer {
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+.usa_card__img img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+img {
+  max-width: 100%;
+}
+@slate-5: #f2f2f2;
+@slate-10: #e3e3e4;
+@slate-20: #c7c8ca;
+@slate-30: #abacaf;
+@slate-40: #8f9195;
+@slate-50: #74767b;
+@slate-60: #585b5f;
+@slate-70: #454649;
+@slate-80: #2e2f31;
+@slate-90: #171718;
+
+@cerulean-10: #d4e7f2;
+@cerulean-30: #66afd7;
+@cerulean-70: #004971;
+@dark-blue-60: #385ca8;
+@dark-blue-70: #263f6e;
+@dark-blue-80: #1a2f5b;
+
+@cranberry-10: #fddde6;
+@cranberry-20: #ffbdcd;
+@cranberry-30: #f57a99;
+@cranberry-40: #fa4774;
+@cranberry-50: #e7184c;
+@cranberry-60: #bb0e3d;
+@cranberry-70: #8a0e2d;
+
+@teal-5: #d1faf7;
+@teal-10: #c6eaeb;
+@teal-20: #a3dce0;
+@teal-30: #44bfc6;
+@teal-40: #28a1a9;
+@teal-50: #2c8187;
+@teal-60: #15696f;
+
+@gold-warm-10: #f4e5c3;
+@gold-warm-20: #f4c82a;
+@gold-warm-30: #d9a01c;
+@gold-warm-40: #d5a129;
+@gold-warm-50: #996e0a;
+@gold-warm-60: #7d5b14;
+
+@base-lightest: @slate-5;
+@base-lighter: @slate-10;
+@base-light: @slate-30;
+@base: @slate-50;
+@base-dark: @slate-60;
+@base-darker: @slate-70;
+@base-darkest: @slate-90;
+@ink: @slate-90;
+@primary-lighter: @cerulean-10;
+@primary-light: @cerulean-30;
+@primary: @dark-blue-60;
+@primary-vivid: @dark-blue-60;
+@primary-dark: @cerulean-70;
+@primary-darker: @dark-blue-80;
+@secondary-lighter: @cranberry-10;
+@secondary-light: @cranberry-30;
+@secondary: @cranberry-50;
+@secondary-vivid: @cranberry-50;
+@secondary-dark: @cranberry-60;
+@secondary-darker: @cranberry-70;
+@accent-cool-lighter: @teal-5;
+@accent-cool-light: @teal-20;
+@accent-cool: @teal-30;
+@accent-cool-dark: @teal-40;
+@accent-cool-darker: @teal-60;
+@accent-warm-lighter: @gold-warm-10;
+@accent-warm-light: @gold-warm-20;
+@accent-warm: @gold-warm-30;
+@accent-warm-dark: @gold-warm-40;
+@accent-warm-darker: @gold-warm-50;
+
+@box-shadow: inset 0 0 0 2px;
+
+button {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+button:not([disabled]):focus {
+  outline: 0.25rem solid @primary-darker;
+  outline-offset: 0;
+}
+
+.usa_button {
+  font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial,
+    sans-serif;
+  font-size: 1.06rem;
+  line-height: 0.9;
+  color: white;
+  background-color: @primary;
+  appearance: none;
+  border: 0;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+@media all and (min-width: 30em) {
+  .usa_button {
+    width: auto;
+  }
+}
+
+.usa_button:visited {
+  color: white;
+}
+
+.usa_button:hover,
+.usa_button.usa_button--hover {
+  color: white;
+  background-color: @primary-dark;
+  border-bottom: 0;
+  text-decoration: none;
+}
+
+.usa_button:active,
+.usa_button.usa_button--active {
+  color: white;
+  background-color: @primary-darker;
+}
+
+.usa_button:not([disabled]):focus,
+.usa_button:not([disabled]).usa-focus {
+  outline-offset: 0.25rem;
+}
+
+.usa_button:disabled {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: @base-light;
+  color: white;
+  pointer-events: none;
+}
+
+.usa_button:disabled:hover,
+.usa_button:disabled.usa_button--hover,
+.usa_button:disabled:active,
+.usa_button:disabled.usa_button--active,
+.usa_button:disabled:focus,
+.usa_button:disabled.usa-focus {
+  background-color: @base-light;
+  border: 0;
+  box-shadow: none;
+}
+
+.usa_button--accent-cool {
+  color: #1b1b1b;
+  background-color: @accent-cool;
+}
+
+.usa_button--accent-cool:visited {
+  color: #1b1b1b;
+  background-color: @accent-cool;
+}
+
+.usa_button--accent-cool:hover,
+.usa_button--accent-cool.usa_button--hover {
+  color: #1b1b1b;
+  background-color: @accent-cool-dark;
+}
+
+.usa_button--accent-cool:active,
+.usa_button--accent-cool.usa_button--active {
+  color: white;
+  background-color: @accent-cool-darker;
+}
+
+.usa_button--accent-warm {
+  color: #1b1b1b;
+  background-color: @accent-warm;
+}
+
+.usa_button--accent-warm:visited {
+  color: #1b1b1b;
+  background-color: @accent-warm;
+}
+
+.usa_button--accent-warm:hover,
+.usa_button--accent-warm.usa_button--hover {
+  color: white;
+  background-color: @accent-warm-dark;
+}
+
+.usa_button--accent-warm:active,
+.usa_button--accent-warm.usa_button--active {
+  color: white;
+  background-color: @accent-warm-darker;
+}
+
+.usa_button--outline {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px @primary;
+  color: @primary;
+}
+
+.usa_button--outline:visited {
+  color: @primary;
+}
+
+.usa_button--outline:hover,
+.usa_button--outline.usa_button--hover {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px @primary-dark;
+  color: @primary-dark;
+}
+
+.usa_button--outline:active,
+.usa_button--outline.usa_button--active {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px @primary-darker;
+  color: @primary-darker;
+}
+
+.usa_button--outline.usa_button--inverse {
+  box-shadow: inset 0 0 0 2px @base-light;
+  color: @base-light;
+}
+
+.usa_button--outline.usa_button--inverse:visited {
+  color: @base-light;
+}
+
+.usa_button--outline.usa_button--inverse:hover,
+.usa_button--outline.usa_button--inverse.usa_button--hover {
+  box-shadow: inset 0 0 0 2px @base-lighter;
+  color: @base-lighter;
+}
+
+.usa_button--outline.usa_button--inverse:active,
+.usa_button--outline.usa_button--inverse.usa_button--active {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px white;
+  color: white;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: subpixel-antialiased;
+  color: @primary;
+  text-decoration: underline;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  color: @base-lighter;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:visited {
+  color: @primary;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:hover {
+  color: @primary-dark;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:active {
+  color: @primary-darker;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:focus {
+  outline: 0.25rem solid @primary-dark;
+  outline-offset: 0;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:hover,
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:active {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: subpixel-antialiased;
+  background-color: transparent;
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:visited {
+  color: #e6e6e6;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:hover,
+.usa_button--outline.usa_button--inverse.usa_button--unstyled.usa_button--hover {
+  color: #f0f0f0;
+}
+
+.usa_button--outline.usa_button--inverse.usa_button--unstyled:active,
+.usa_button--outline.usa_button--inverse.usa_button--unstyled.usa_button--active {
+  color: white;
+}
+
+.usa_button--base {
+  color: white;
+  background-color: @base;
+}
+
+.usa_button--base:hover,
+.usa_button--base.usa_button--hover {
+  color: white;
+  background-color: @base-dark;
+}
+
+.usa_button--base:active,
+.usa_button--base.usa_button--active {
+  color: white;
+  background-color: @base-darker;
+}
+
+.usa_button--secondary {
+  color: white;
+  background-color: @secondary;
+}
+
+.usa_button--secondary:hover,
+.usa_button--secondary.usa_button--hover {
+  color: white;
+  background-color: @secondary-dark;
+}
+
+.usa_button--secondary:active,
+.usa_button--secondary.usa_button--active {
+  color: white;
+  background-color: @secondary-darker;
+}
+
+.usa_button--big {
+  border-radius: 0.25rem;
+  font-size: 1.33rem;
+  padding: 1rem 1.5rem;
+}
+
+.usa_button--disabled {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: @base;
+  color: white;
+  pointer-events: none;
+}
+
+.usa_button--disabled:hover,
+.usa_button--disabled.usa_button--hover,
+.usa_button--disabled:active,
+.usa_button--disabled.usa_button--active,
+.usa_button--disabled:focus,
+.usa_button--disabled.usa-focus {
+  background-color: @base;
+  border: 0;
+  box-shadow: none;
+}
+
+.usa_button--outline-disabled,
+.usa_button--outline-inverse-disabled,
+.usa_button--outline:disabled,
+.usa_button--outline-inverse:disabled,
+.usa_button--outline-inverse:disabled {
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.usa_button--outline-disabled:hover,
+.usa_button--outline-disabled.usa_button--hover,
+.usa_button--outline-disabled:active,
+.usa_button--outline-disabled.usa_button--active,
+.usa_button--outline-disabled:focus,
+.usa_button--outline-disabled.usa-focus,
+.usa_button--outline-inverse-disabled:hover,
+.usa_button--outline-inverse-disabled.usa_button--hover,
+.usa_button--outline-inverse-disabled:active,
+.usa_button--outline-inverse-disabled.usa_button--active,
+.usa_button--outline-inverse-disabled:focus,
+.usa_button--outline-inverse-disabled.usa-focus,
+.usa_button--outline:disabled:hover,
+.usa_button--outline:disabled.usa_button--hover,
+.usa_button--outline:disabled:active,
+.usa_button--outline:disabled.usa_button--active,
+.usa_button--outline:disabled:focus,
+.usa_button--outline:disabled.usa-focus,
+.usa_button--outline-inverse:disabled:hover,
+.usa_button--outline-inverse:disabled.usa_button--hover,
+.usa_button--outline-inverse:disabled:active,
+.usa_button--outline-inverse:disabled.usa_button--active,
+.usa_button--outline-inverse:disabled:focus,
+.usa_button--outline-inverse:disabled.usa-focus,
+.usa_button--outline-inverse:disabled:hover,
+.usa_button--outline-inverse:disabled.usa_button--hover,
+.usa_button--outline-inverse:disabled:active,
+.usa_button--outline-inverse:disabled.usa_button--active,
+.usa_button--outline-inverse:disabled:focus,
+.usa_button--outline-inverse:disabled.usa-focus {
+  background-color: transparent;
+  border: 0;
+}
+
+.usa_button--outline-disabled,
+.usa_button--outline:disabled {
+  box-shadow: inset 0 0 0 2px @base;
+  color: @base;
+}
+
+.usa_button--outline-disabled.usa_button--inverse,
+.usa_button--outline:disabled.usa_button--inverse {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px @base-light;
+  color: @base-light;
+}
+
+.usa_button--unstyled {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: subpixel-antialiased;
+  color: @primary;
+  text-decoration: underline;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.usa_button--unstyled:visited {
+  color: @primary-dark;
+}
+
+.usa_button--unstyled:hover {
+  color: @primary-darker;
+}
+
+.usa_button--unstyled:active {
+  color: @primary-light;
+}
+
+.usa_button--unstyled:focus {
+  outline: 0.25rem solid @primary-dark;
+  outline-offset: 0;
+}
+
+.usa_button--unstyled:hover,
+.usa_button--unstyled:active {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: subpixel-antialiased;
+  background-color: transparent;
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.mock_container {
+  width: 400px !important;
+}

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import ColorStack from "./ColorStack";
 import ModalWindow from "./ModalWindow";
 import SelectColor from "./SelectColor";
+import MockUI from "./MockUI";
 
 import { Store } from "../Store";
 import { addLiveStack, setModalState, loadLiveStack } from "../Actions";
@@ -24,6 +25,10 @@ const ColorStackGenerator = (props) => {
     setStackSelected(e.target.value);
   };
 
+  const handleView = () => {
+    setModalState({ isOpen: true, content: <MockUI /> }, dispatch);
+  };
+
   const handleAdd = () => {
     setModalState({ isOpen: true, content: <SelectColor /> }, dispatch);
   };
@@ -32,22 +37,8 @@ const ColorStackGenerator = (props) => {
     loadLiveStack(stackSelected, dispatch);
   };
 
-  const demoStyle = {
-    background: demo.background,
-    color: demo.foreground,
-  };
-  const buttonStyle = {
-    background: demo.primary,
-    color: demo.foreground,
-  };
-  const dropStyle = {
-    background: demo.foreground,
-    color: demo.background,
-    borderColor: demo.rimary,
-  };
-
   const dropDown = (
-    <select value={stackSelected} style={dropStyle} onChange={handleSelect}>
+    <select value={stackSelected} onChange={handleSelect}>
       {tokenSections.map((item) => {
         return (
           <option key={item} value={item}>
@@ -71,7 +62,7 @@ const ColorStackGenerator = (props) => {
 
   return (
     <div>
-      <div className={css.header} style={demoStyle}>
+      <div className={css.header}>
         <h1>USWDS Color Palette Generator</h1>
         <p>
           Tool for creating WCAG accessibile color palettes for use in web media
@@ -81,25 +72,22 @@ const ColorStackGenerator = (props) => {
           <li>Select:</li>
           <li>{dropDown}</li>
           <li>
-            <a
-              href="#"
-              className={css.button}
-              style={buttonStyle}
-              onClick={handleLoad}
-            >
+            <a href="#" className={css.button} onClick={handleLoad}>
               Load
             </a>
           </li>
           <li></li>
           <li>Create:</li>
           <li>
-            <a
-              href="#"
-              className={css.button}
-              style={buttonStyle}
-              onClick={handleAdd}
-            >
+            <a href="#" className={css.button} onClick={handleAdd}>
               New
+            </a>
+          </li>
+          <li></li>
+          <li>View:</li>
+          <li>
+            <a href="#" className={css.button} onClick={handleView}>
+              Demo
             </a>
           </li>
         </ul>
