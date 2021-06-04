@@ -42,7 +42,7 @@ const setDemo = (state, config) => {
 };
 
 const addLiveStack = (state, config) => {
-  const colorName = config.props.name;
+  const colorName = config.props[0].name;
   const { liveStacks } = state;
   let newStack = clone(liveStacks);
   newStack[`${colorName}`] = config;
